@@ -1,0 +1,51 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main # Change this if your main branch is named 'master'
+
+env:
+  PROJECT_ID: logicboots-479410
+  REGION: us-central1
+  SERVICE_NAME: coeur-ai-web
+  GAR_LOCATION: us-central1-docker.pkg.dev
+  REPOSITORY: cloud-run-source-deploy
+  IMAGE_NAME: coeur-ai-image
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Authorize Docker push
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
+
+      - name: Build and Push Docker image
+        run: |
+          cd coeur-ai
+          docker build -t ${{ env.GAR_LOCATION }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+          docker push ${{ env.GAR_LOCATION }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE_NAME }}
+          region: ${{ env.REGION }}
+          image: ${{ env.GAR_LOCATION }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          # If you want it public:
+          flags: '--allow-unauthenticated'
