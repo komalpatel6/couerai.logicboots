@@ -33,7 +33,8 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: Authorize Docker push
-        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
+        run: |
+          gcloud auth print-access-token | docker login -u oauth2access_token --password-stdin https://${{ env.GAR_LOCATION }}
 
       - name: Build and Push Docker image
         run: |
