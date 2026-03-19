@@ -3,10 +3,9 @@ name: Deploy to Cloud Run
 on:
   push:
     branches:
-      - main # Change this if your main branch is named 'master'
-
+      - main
 env:
-  PROJECT_ID: logicboots-479410
+  PROJECT_ID: logicboots-490514
   REGION: us-central1
   SERVICE_NAME: coeur-ai-web
   GAR_LOCATION: us-central1-docker.pkg.dev
@@ -27,7 +26,8 @@ jobs:
         id: auth
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+          workload_identity_provider: 'projects/81350131385/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+          service_account: 'github-deploy-action@logicboots-490514.iam.gserviceaccount.com'
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
