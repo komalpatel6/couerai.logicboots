@@ -26,6 +26,7 @@ jobs:
         id: auth
         uses: google-github-actions/auth@v2
         with:
+          token_format: 'access_token'
           workload_identity_provider: 'projects/81350131385/locations/global/workloadIdentityPools/github-pool-v2/providers/github-provider-v2'
           service_account: 'github-deploy-action@logicboots-490514.iam.gserviceaccount.com'
 
@@ -34,7 +35,7 @@ jobs:
 
       - name: Authorize Docker push
         run: |
-          gcloud auth print-access-token | docker login -u oauth2access_token --password-stdin https://${{ env.GAR_LOCATION }}
+          echo "${{ steps.auth.outputs.access_token }}" | docker login -u oauth2access_token --password-stdin https://${{ env.GAR_LOCATION }}
 
       - name: Build and Push Docker image
         run: |
