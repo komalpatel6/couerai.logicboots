@@ -1,15 +1,27 @@
+'use client'
+
+import React, { useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HeartPulse, Smartphone, Users, WifiOff } from "lucide-react";
 import { FadeIn } from "@/components/fade-in";
 import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
 
-const features = [
+interface Feature {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  images: string[];
+  aiHint: string;
+}
+
+const features: Feature[] = [
   {
     icon: <HeartPulse className="h-10 w-10 text-primary" />,
     title: "AI-Powered Detection",
     description:
       "Our proprietary algorithms detect arrhythmias and other cardiac anomalies with superhuman accuracy, 24/7.",
-    image: "/f1.jpg",
+    images: ["/f1.jpg"],
     aiHint: "heartbeat graph",
   },
   {
@@ -17,7 +29,7 @@ const features = [
     title: "Real-Time Mobile App",
     description:
       "A user-friendly app for patients to view their data and for clinicians to receive instant alerts on the go.",
-    image: "/f2.jpg",
+    images: ["/f2.jpg"],
     aiHint: "mobile application",
   },
   {
@@ -25,7 +37,7 @@ const features = [
     title: "Remote Diagnosis",
     description:
       "Enable expert consultations from anywhere in the world, breaking down geographical barriers to care.",
-    image: "/f3.jpg",
+    images: ["/f3.jpg"],
     aiHint: "doctor patient",
   },
   {
@@ -33,10 +45,56 @@ const features = [
     title: "Offline Functionality",
     description:
       "The device continues to collect and analyze data even without an internet connection, syncing when it reconnects.",
-    image: "/f4.jpg",
+    images: ["/f4.jpg", "/f9.jpg"],
     aiHint: "remote landscape",
   },
 ];
+
+function FeatureImage({ feature }: { feature: Feature }) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 30 });
+
+  useEffect(() => {
+    if (!emblaApi || feature.images.length <= 1) return;
+
+    const intervalId = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(intervalId);
+  }, [emblaApi, feature.images.length]);
+
+  if (feature.images.length <= 1) {
+    return (
+      <Image
+        src={feature.images[0]}
+        data-ai-hint={feature.aiHint}
+        alt={feature.title}
+        width={600}
+        height={600}
+        className="object-cover w-full h-[300px]"
+      />
+    );
+  }
+
+  return (
+    <div className="overflow-hidden" ref={emblaRef}>
+      <div className="flex">
+        {feature.images.map((src, index) => (
+          <div key={index} className="flex-[0_0_100%] min-w-0">
+            <Image
+              src={src}
+              data-ai-hint={feature.aiHint}
+              alt={`${feature.title} - ${index + 1}`}
+              width={600}
+              height={600}
+              className="object-cover w-full h-[300px]"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function FeaturesSection() {
   return (
@@ -70,15 +128,8 @@ export default function FeaturesSection() {
                   <p className="text-muted-foreground mb-6">
                     {feature.description}
                   </p>
-                  <div className="mt-auto -mx-6 -mb-6 mt-6">
-                    <Image
-                      src={feature.image}
-                      data-ai-hint={feature.aiHint}
-                      alt={feature.title}
-                      width={600}
-                      height={600}
-                      className="object-cover w-full h-[300px]"
-                    />
+                  <div className="mt-auto -mx-6 -mb-6">
+                    <FeatureImage feature={feature} />
                   </div>
                 </CardContent>
               </Card>

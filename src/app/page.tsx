@@ -6,6 +6,7 @@ import HowItWorksSection from '@/components/sections/how-it-works';
 import FeaturesSection from '@/components/sections/features';
 import ClinicianBenefitsSection from '@/components/sections/clinician-benefits';
 import CtaSection from '@/components/sections/cta';
+import GlobalPresenceSection from '@/components/sections/global-presence';
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
         <HowItWorksSection />
         <FeaturesSection />
         <ClinicianBenefitsSection />
-        
+        <GlobalPresenceSection />
       </main>
       <Footer />
     </div>

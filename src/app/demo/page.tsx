@@ -8,8 +8,18 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 export default function DemoPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,6 +37,33 @@ export default function DemoPage() {
       y: 0,
       transition: { duration: 0.5 },
     },
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const response = await fetch("/api/demo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        const errorData = await response.json();
+        console.error("Form submission failed:", errorData);
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setStatus("error");
+    }
   };
 
   return (
@@ -60,12 +97,15 @@ export default function DemoPage() {
           {/* Row 2 Left: Form */}
           <motion.div variants={itemVariants}>
             <div className="bg-[#121820] border border-white/5 rounded-2xl p-5 md:p-6 shadow-2xl">
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-4" onSubmit={handleFormSubmit}>
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-slate-300">Full name</label>
                   <Input
                     id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Full Name"
+                    required
                     className="bg-[#0a0f16] border-white/10 text-white placeholder:text-slate-600 focus-visible:ring-teal-500/50 h-10 text-sm"
                   />
                 </div>
@@ -75,7 +115,10 @@ export default function DemoPage() {
                   <Input
                     id="email"
                     type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="Email"
+                    required
                     className="bg-[#0a0f16] border-white/10 text-white placeholder:text-slate-600 focus-visible:ring-teal-500/50 h-10 text-sm"
                   />
                 </div>
@@ -85,6 +128,8 @@ export default function DemoPage() {
                   <Input
                     id="phone"
                     type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+91"
                     className="bg-[#0a0f16] border-white/10 text-white placeholder:text-slate-600 focus-visible:ring-teal-500/50 h-10 text-sm"
                   />
@@ -94,6 +139,8 @@ export default function DemoPage() {
                   <label htmlFor="message" className="text-sm font-medium text-slate-300">How can we help you?</label>
                   <Textarea
                     id="message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Tell us about your clinic or hospital..."
                     className="bg-[#0a0f16] border-white/10 text-white placeholder:text-slate-600 focus-visible:ring-teal-500/50 min-h-[100px] text-sm resize-none"
                   />
@@ -101,10 +148,17 @@ export default function DemoPage() {
 
                 <Button
                   type="submit"
+                  disabled={status === "loading"}
                   className="bg-[#208b96] hover:bg-[#1a767f] text-white px-6 py-5 rounded-md font-medium transition-colors w-full sm:w-auto"
                 >
-                  Request Demo &rarr;
+                  {status === "loading" ? "Sending..." : status === "success" ? "Sent Successfully!" : status === "error" ? "Try Again" : "Request Demo →"}
                 </Button>
+                {status === "success" && (
+                  <p className="text-emerald-400 text-xs mt-2 font-medium">Thank you! Your request has been sent to our team.</p>
+                )}
+                {status === "error" && (
+                  <p className="text-rose-400 text-xs mt-2 font-medium">Something went wrong. Please try again or contact us directly.</p>
+                )}
               </form>
             </div>
           </motion.div>
@@ -171,7 +225,7 @@ export default function DemoPage() {
               <div>
                 <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase mb-2">Visit Us</p>
                 <p className="text-white font-medium">
-                  India
+                  Mass Robotics, 12 channel, St # 202, Boston,MA 02210
                 </p>
               </div>
             </motion.div>

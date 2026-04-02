@@ -40,7 +40,7 @@ export default function HeroSection() {
   ];
 
   // Animation variants
-  // Intro Logo sequence
+  // Intro Logo sequence (0s to 3s)
   const logoIntroVariants = {
     hidden: { opacity: 0, scale: 0.9, filter: "blur(10px)", display: "flex" },
     visible: {
@@ -48,10 +48,27 @@ export default function HeroSection() {
       scale: [0.9, 1, 1, 1.1],
       filter: ["blur(10px)", "blur(0px)", "blur(0px)", "blur(20px)"],
       transition: {
-        duration: 3.5, // Total length of intro
-        times: [0, 0.3, 0.7, 1], // Fade in by 30%, hold until 70%, fade out by 100%
+        duration: 3,
+        times: [0, 0.2, 0.8, 1],
       },
-      transitionEnd: { display: "none" } // Remove from layout after fade out
+      transitionEnd: { display: "none" }
+    }
+  };
+
+  // HV Image sequence (3s to 6s)
+  const hvIntroVariants = {
+    hidden: { opacity: 0, scale: 0.9, filter: "blur(10px)", display: "none" },
+    visible: {
+      display: "flex",
+      opacity: [0, 1, 1, 0],
+      scale: [0.9, 1, 1, 1.1],
+      filter: ["blur(10px)", "blur(0px)", "blur(0px)", "blur(20px)"],
+      transition: {
+        duration: 3,
+        delay: 3, // Start after logo
+        times: [0, 0.2, 0.8, 1],
+      },
+      transitionEnd: { display: "none" }
     }
   };
 
@@ -60,8 +77,8 @@ export default function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2, // Faster stagger since they waited
-        delayChildren: 3.2, // Wait for logo to nearly finish fading out
+        staggerChildren: 0.2,
+        delayChildren: 5.8, // Wait for both intro steps (3s + 3s, but start slightly early)
       },
     },
   };
@@ -101,7 +118,7 @@ export default function HeroSection() {
       </motion.div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 mt-16 flex flex-col items-center">
-        {/* Intro Logo Sequence */}
+        {/* Step 1: Intro Logo Sequence */}
         {isMounted && (
           <motion.div
             variants={logoIntroVariants}
@@ -122,6 +139,24 @@ export default function HeroSection() {
             >
               Coeur AI
             </motion.p>
+          </motion.div>
+        )}
+
+        {/* Step 2: HV Image Sequence */}
+        {isMounted && (
+          <motion.div
+            variants={hvIntroVariants}
+            initial="hidden"
+            animate="visible"
+            className="absolute inset-0 flex flex-col items-center justify-center z-50 pointer-events-none"
+          >
+            <div className="h-48 w-48 md:h-64 md:w-64 rounded-full bg-white flex items-center justify-center shadow-[0_0_50px_rgba(255,255,255,0.2)] overflow-hidden">
+              <img
+                src="/hv.png"
+                className="w-full h-full object-contain p-6 md:p-10"
+                alt="HV Intro Section"
+              />
+            </div>
           </motion.div>
         )}
 
@@ -175,7 +210,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 4.5, duration: 1.5 }} // Delay 1.5s AFTER main text finishes
+            transition={{ delay: 7.2, duration: 1.5 }} // Delay long enough after the doubled intro
             className="mt-20 md:mt-10"
           >
             <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase">

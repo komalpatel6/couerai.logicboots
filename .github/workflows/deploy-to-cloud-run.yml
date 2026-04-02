@@ -46,5 +46,7 @@ jobs:
           service: ${{ env.SERVICE_NAME }}
           region: ${{ env.REGION }}
           image: ${{ env.GAR_LOCATION }}/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          # If you want it public:
+          # Pass the secret from GitHub to Cloud Run at runtime
+          env_vars: |
+            RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
           flags: '--allow-unauthenticated'
