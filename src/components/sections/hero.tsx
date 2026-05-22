@@ -178,10 +178,14 @@ export default function HeroSection() {
             {/* Main Headline - Elegant Serif */}
             <motion.h1
               variants={itemVariants}
-              className="text-5xl tracking-tight sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white py-2"
-              style={{ fontFamily: "'Playfair Display', 'Merriweather', serif" }} // Fallback inline for the elegant serif style if not in tailwind config yet
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-white py-3 leading-[1.15] tracking-tight max-w-4xl"
             >
-              The future of <br /> <span className="italic text-gray-300 font-light">cardiac care</span> is here.
+              The future of <br />
+              <span className="italic font-light text-slate-300/95">
+                Respiratory and cardiac
+              </span>{" "}
+              <br />
+              care is here.
             </motion.h1>
 
             <motion.p
