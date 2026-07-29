@@ -79,8 +79,8 @@ export default function SolutionPartsSection() {
           </div>
         </FadeIn>
 
-        {/* Card grid - Vertical stacked on mobile, Single Row on desktop */}
-        <div className="flex flex-col gap-6 xl:grid xl:grid-cols-5 xl:gap-5 justify-start">
+        {/* Card grid - Responsive columns (1 on mobile, 2 on tablet, 3 on intermediate, 5 on desktop) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 xl:gap-5 justify-center">
           {useCases.map((uc, i) => (
             <FadeIn key={uc.tag} delay={i * 60}>
               <div className="group bg-white rounded-3xl border border-slate-100 overflow-hidden flex flex-col h-full hover:border-[#0052ff]/30 hover:shadow-[0_20px_40px_rgba(10,26,77,0.05)] transition-all duration-300 w-full">

@@ -146,7 +146,7 @@ export default function HowItWorksSection() {
             {/* Cinematic Full-Bleed Video Frame */}
             <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-black shadow-2xl overflow-hidden aspect-[16/7] md:aspect-[21/9] lg:aspect-[25/9]">
               <video
-                src="/Video Project1.mp4"
+                src="/video-project1.mp4"
                 className="w-full h-full object-cover opacity-90"
                 autoPlay
                 muted
