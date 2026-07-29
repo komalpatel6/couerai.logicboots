@@ -1,230 +1,118 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { ArrowRight, HeartPulse, Activity } from "lucide-react";
-import Image from "next/image";
-import ParticleNetwork from "../ui/particle-network";
-import LogoCarousel from "../ui/LogoCarousel";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function HeroSection() {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  const logos = [
-    {
-      src: "/logo1.png",
-      alt: "Partner Logo 1",
-    },
-    {
-      src: "/logo2.webp",
-      alt: "Partner Logo 2",
-    },
-    {
-      src: "/logo3.png",
-      alt: "Partner Logo 3",
-    },
-    {
-      src: "/logo4.png",
-      alt: "Partner Logo 4",
-    },
-    {
-      src: "/logo5.png",
-      alt: "Partner Logo 5",
-    },
-  ];
-
-  // Animation variants
-  // Intro Logo sequence (0s to 3s)
-  const logoIntroVariants = {
-    hidden: { opacity: 0, scale: 0.9, filter: "blur(10px)", display: "flex" },
-    visible: {
-      opacity: [0, 1, 1, 0],
-      scale: [0.9, 1, 1, 1.1],
-      filter: ["blur(10px)", "blur(0px)", "blur(0px)", "blur(20px)"],
-      transition: {
-        duration: 3,
-        times: [0, 0.2, 0.8, 1],
-      },
-      transitionEnd: { display: "none" }
-    }
-  };
-
-  // HV Image sequence (3s to 6s)
-  const hvIntroVariants = {
-    hidden: { opacity: 0, scale: 0.9, filter: "blur(10px)", display: "none" },
-    visible: {
-      display: "flex",
-      opacity: [0, 1, 1, 0],
-      scale: [0.9, 1, 1, 1.1],
-      filter: ["blur(10px)", "blur(0px)", "blur(0px)", "blur(20px)"],
-      transition: {
-        duration: 3,
-        delay: 3, // Start after logo
-        times: [0, 0.2, 0.8, 1],
-      },
-      transitionEnd: { display: "none" }
-    }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 5.8, // Wait for both intro steps (3s + 3s, but start slightly early)
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1 }
-    },
-  };
-
-  const floatingCardVariants = {
-    hidden: { opacity: 0, y: 60, scale: 0.95, filter: "blur(10px)" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      filter: "blur(0px)",
-      transition: { duration: 1.2 }
-    }
-  };
-
   return (
-    <section className="relative flex items-center justify-center text-center overflow-hidden min-h-[850px] py-20 pb-40">
-      {/* Background with slow zoom */}
-      <motion.div
-        className="absolute inset-0 z-0 origin-center"
-        initial={{ scale: 1.15 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 15, ease: "easeOut" }}
-      >
-        <ParticleNetwork />
-        {/* Subtle overlay to dim background slightly behind text */}
-        <div className="absolute inset-0 bg-background/20 backdrop-blur-[2px]"></div>
-      </motion.div>
+    <section className="relative h-[680px] flex flex-col items-center justify-center text-center overflow-hidden mt-[72px]">
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6 mt-16 flex flex-col items-center">
-        {/* Step 1: Intro Logo Sequence */}
-        {isMounted && (
-          <motion.div
-            variants={logoIntroVariants}
-            initial="hidden"
-            animate="visible"
-            className="absolute inset-0 flex flex-col items-center justify-center z-50 pointer-events-none"
+      {/* Full-bleed background image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/hero3.png"
+          alt=""
+          fill
+          priority
+          className="object-cover"
+          quality={90}
+        />
+        {/* Dark overlay for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
+      </div>
+
+      {/* Content overlay */}
+      <div className="relative z-10 container mx-auto px-6 md:px-8 max-w-5xl flex flex-col items-center">
+
+        {/* Main headline — compact, bold, white with gradient highlight */}
+        <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[54px] xl:text-[60px] font-bold leading-[1.12] tracking-[-0.025em] text-white max-w-4xl mb-6">
+          Smarter Cardiac Screening,
+          <br />
+          <span className="bg-gradient-to-r from-[#60a5fa] via-[#93c5fd] to-[#3b82f6] bg-clip-text text-transparent">
+            Powered by AI
+          </span>
+        </h1>
+
+        {/* Sub-headline */}
+        <p className="text-[17px] sm:text-[19px] md:text-[21px] text-slate-200 leading-relaxed font-medium max-w-3xl mb-10 tracking-tight">
+          Early screening can change outcomes. Coeur.AI helps healthcare professionals screen
+          faster, work smarter, and make informed decisions — without disrupting how they
+          already work.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+          <Link
+            href="/demo"
+            className="inline-flex items-center justify-center h-[56px] px-8 rounded-xl bg-[#0052ff] hover:bg-[#0040d0] text-white text-[15px] font-bold transition-all duration-150 shadow-md hover:shadow-lg w-full sm:w-auto"
           >
-            <div className="h-32 w-32 md:h-40 md:w-40 rounded-full bg-white flex items-center justify-center shadow-[0_0_50px_rgba(255,255,255,0.2)]">
-              <img
-                src="/co-log.png"
-                className="h-24 w-24 md:h-32 md:w-32 object-contain"
-                alt="Coeur AI Intro Logo"
+            Request a Demo
+          </Link>
+
+          <div className="flex items-center gap-3">
+            {/* Apple App Store */}
+            <Link
+              href="#"
+              className="inline-flex items-center h-[56px] px-4 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 backdrop-blur-sm transition-colors"
+              aria-label="Download on the App Store"
+            >
+              <Image
+                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                alt="Download on the App Store"
+                width={130}
+                height={38}
+                className="h-9 w-auto"
               />
-            </div>
-            <motion.p
-              className="mt-6 text-3xl font-bold tracking-widest text-white uppercase opacity-90"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Coeur AI
-            </motion.p>
-          </motion.div>
-        )}
+            </Link>
 
-        {/* Step 2: HV Image Sequence */}
-        {isMounted && (
-          <motion.div
-            variants={hvIntroVariants}
-            initial="hidden"
-            animate="visible"
-            className="absolute inset-0 flex flex-col items-center justify-center z-50 pointer-events-none"
-          >
-            <div className="h-48 w-48 md:h-64 md:w-64 rounded-full bg-white flex items-center justify-center shadow-[0_0_50px_rgba(255,255,255,0.2)] overflow-hidden">
-              <img
-                src="/hv.png"
-                className="w-full h-full object-contain p-6 md:p-10"
-                alt="HV Intro Section"
+            {/* Google Play Store */}
+            <Link
+              href="https://play.google.com/store/apps/details?id=com.logicboots.coeurai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center h-[56px] px-4 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 backdrop-blur-sm transition-colors"
+              aria-label="Get it on Google Play"
+            >
+              <Image
+                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                alt="Get it on Google Play"
+                width={145}
+                height={38}
+                className="h-9 w-auto"
               />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom logo ticker — infinite scroll */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/80 to-transparent overflow-hidden">
+        <div className="py-8 opacity-70">
+          <div className="flex items-center animate-infinite-scroll">
+            {/* First set of logos */}
+            <div className="flex items-center gap-12 px-6 shrink-0">
+              <Image src="/dpiit.png" alt="DPIIT" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/iitrLogo.png" alt="IIT Roorkee" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/meity.png" alt="MeitY" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/stpi.png" alt="STPI" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/tides.png" alt="TIDES" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/metech.png" alt="MassTech" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/hv.png" alt="Healthcare Partner" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/mid.png" alt="Medical Innovation" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
             </div>
-          </motion.div>
-        )}
-
-        {/* Main Content (Delayed) */}
-        {isMounted && (
-          <motion.div
-            className="flex flex-col items-center justify-center w-full max-w-4xl"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {/* Tagline / Intro - Sans Serif */}
-            <motion.div variants={itemVariants}>
-              <span className="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary border border-primary/20 text-sm font-semibold mb-6 tracking-wide shadow-sm shadow-primary/20 backdrop-blur-md">
-                Meet Coeur AI
-              </span>
-            </motion.div>
-
-            {/* Main Headline - Elegant Serif */}
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-white py-3 leading-[1.15] tracking-tight max-w-4xl"
-            >
-              The future of <br />
-              <span className="italic font-light text-slate-300/95">
-                Respiratory and cardiac
-              </span>{" "}
-              <br />
-              care is here.
-            </motion.h1>
-
-            <motion.p
-              variants={itemVariants}
-              className="mt-6 max-w-2xl mx-auto text-lg text-gray-300 md:text-xl font-light leading-relaxed"
-            >
-              Coeur AI revolutionizes cardiac monitoring with cutting-edge
-              artificial intelligence, providing life-saving insights for
-              clinicians and patients.
-            </motion.p>
-
-            <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Button
-                size="lg"
-                className="text-base font-semibold px-8 py-6 w-full sm:w-auto shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] transition-shadow"
-                asChild>
-                <Link href="/demo">
-                  Request a Demo <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </motion.div>
-          </motion.div>
-        )}
-
-        {isMounted && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 7.2, duration: 1.5 }} // Delay long enough after the doubled intro
-            className="mt-20 md:mt-10"
-          >
-            <p className="text-sm font-medium text-muted-foreground tracking-widest uppercase">
-              Trusted & Supported By
-            </p>
-            <div className="mt-6 flex justify-center items-center">
-              <LogoCarousel columnCount={1} />
+            {/* Duplicate set for seamless loop */}
+            <div className="flex items-center gap-12 px-6 shrink-0" aria-hidden="true">
+              <Image src="/dpiit.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/iitrLogo.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/meity.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/stpi.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/tides.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/metech.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/hv.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/mid.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
             </div>
-          </motion.div>
-        )}
+          </div>
+        </div>
       </div>
     </section>
   );

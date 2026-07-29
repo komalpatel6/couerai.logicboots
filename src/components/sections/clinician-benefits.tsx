@@ -1,52 +1,78 @@
-import { CheckCircle2 } from 'lucide-react';
-import { FadeIn } from '@/components/fade-in';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+"use client";
 
-const benefits = [
-  { text: 'Enhance diagnostic accuracy with AI-driven second opinions.' },
-  { text: 'Reduce manual data review time by up to 90%.' },
-  { text: 'Monitor patients remotely, improving patient retention and care quality.' },
-  { text: 'Seamlessly integrate with existing EMR and hospital systems.' },
-];
+import { FadeIn } from "@/components/fade-in";
+import { CheckCircle2, ShieldCheck, Zap } from "lucide-react";
 
-export default function ClinicianBenefitsSection() {
+export default function TestimonialsSection() {
   return (
-    <section id="benefits" className="py-20 md:py-32">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-24 items-center">
-          <FadeIn>
-            <div className="mx-auto max-w-md lg:max-w-sm">
-              <Image
-                src="/f5.jpg"
-                data-ai-hint="doctor technology"
-                alt="A smiling clinician using a tablet in a modern medical facility."
-                width={500}
-                height={500}
-                className="rounded-xl shadow-2xl shadow-primary/10 w-full h-auto object-cover aspect-square"
-              />
-            </div>
-          </FadeIn>
-          <FadeIn delay={200}>
-            <div className="space-y-4">
-              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm font-medium">For Clinicians</div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">
-                Work Smarter, Not Harder
+    <section className="section-divider py-20 md:py-28 bg-[#faf7f2]/60">
+      <div className="container mx-auto px-6 md:px-8 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Title and Message */}
+          <FadeIn delay={0}>
+            <div>
+              <h2 className="text-[36px] md:text-[48px] font-bold text-[#0a1a4d] leading-[1.15] mb-6">
+                Healthcare isn’t just about having the technology — it’s about the technology actually helping.
               </h2>
-              <p className="text-muted-foreground md:text-xl/relaxed">
-                Coeur AI is designed to augment your expertise, giving you more time to focus on what matters most: your patients.
+              <p className="text-[16px] text-slate-500 leading-relaxed max-w-xl">
+                Coeur.AI is designed to stand alongside healthcare professionals, backing up clinical ears with modern diagnostics that save valuable time during high-volume triage.
               </p>
             </div>
-            <ul className="mt-8 grid gap-4">
-              {benefits.map((benefit, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 mt-1 text-primary flex-shrink-0" />
-                  <span className="text-muted-foreground">{benefit.text}</span>
-                </li>
-              ))}
-            </ul>
-            <Button size="lg" className="mt-8">See a Case Study</Button>
           </FadeIn>
+
+          {/* Right Column: Benefits Grid */}
+          <FadeIn delay={100}>
+            <div className="space-y-6">
+              
+              {/* Benefit 1 */}
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 flex gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:border-blue-200 transition-colors">
+                <div className="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-[#0052ff] shrink-0">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-[16px] font-bold text-[#0a1a4d] mb-1">
+                    Faster screening, without cutting corners
+                  </h3>
+                  <p className="text-[13px] text-slate-500 leading-relaxed">
+                    Instantly isolates heartbeat patterns and lung auscultation signals to support rapid point-of-care decisions.
+                  </p>
+                </div>
+              </div>
+
+              {/* Benefit 2 */}
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 flex gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:border-emerald-200 transition-colors">
+                <div className="h-10 w-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 shrink-0">
+                  <CheckCircle2 className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-[16px] font-bold text-[#0a1a4d] mb-1">
+                    Designed to fit naturally into clinical workflows
+                  </h3>
+                  <p className="text-[13px] text-slate-500 leading-relaxed">
+                    Requires no complex setups or disruptive steps — backing up years of practice seamlessly.
+                  </p>
+                </div>
+              </div>
+
+              {/* Benefit 3 */}
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 flex gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.01)] hover:border-purple-200 transition-colors">
+                <div className="h-10 w-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-500 shrink-0">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-[16px] font-bold text-[#0a1a4d] mb-1">
+                    AI-assisted insights healthcare professionals can rely on
+                  </h3>
+                  <p className="text-[13px] text-slate-500 leading-relaxed">
+                    Advanced machine learning models calibrated specifically to flag key anomalies with clinical consistency.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </FadeIn>
+
         </div>
       </div>
     </section>

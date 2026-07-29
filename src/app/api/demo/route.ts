@@ -8,16 +8,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
   }
 
-  // Handle problematic ESM/CJS interop for Resend (common in Next.js 15)
-  let resend;
-  try {
-    resend = new Resend(apiKey);
-  } catch (e) {
-    console.error("Resend constructor failed, attempting fallback:", e);
-    // Fallback in case of weird import nesting
-    const { Resend: ResendFallback } = require('resend');
-    resend = new ResendFallback(apiKey);
-  }
+  const resend = new Resend(apiKey);
 
   try {
     const { name, email, phone, message } = await req.json();
