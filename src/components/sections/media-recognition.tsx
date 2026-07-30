@@ -2,14 +2,17 @@ import { FadeIn } from "@/components/fade-in";
 import Image from "next/image";
 
 const logos = [
-  { src: "/dpiit.png",    alt: "DPIIT" },
-  { src: "/iitrLogo.png", alt: "IIT Roorkee" },
-  { src: "/meity.png",    alt: "MeitY" },
-  { src: "/stpi.png",     alt: "STPI" },
-  { src: "/tides.png",    alt: "TIDES" },
-  { src: "/metech.png",   alt: "MassTech" },
-  { src: "/hv.png",       alt: "Healthcare Partner" },
-  { src: "/mid.png",      alt: "Medical Innovation" },
+  { src: "/dpiit.png",          alt: "DPIIT" },
+  { src: "/iitrLogo.png",       alt: "IIT Roorkee" },
+  { src: "/meity.png",          alt: "MeitY" },
+  { src: "/stpi.png",           alt: "STPI" },
+  { src: "/tides.png",          alt: "TIDES" },
+  { src: "/metech.png",         alt: "MassTech" },
+  { src: "/iiits.png",          alt: "IIIT Sonepat" },
+  { src: "/harvard.png",        alt: "Harvard HBS Foundry" },
+  { src: "/mass-robotics.png",  alt: "Mass Robotics" },
+  { src: "/hv.png",             alt: "Healthcare Partner" },
+  { src: "/mid.png",            alt: "Medical Innovation" },
 ];
 
 export default function MediaRecognitionSection() {

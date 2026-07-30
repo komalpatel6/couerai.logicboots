@@ -94,7 +94,7 @@ export default function ContactPage() {
                 Get in <span className="text-[#208b96]">Touch</span>
               </h1>
               <p className="text-slate-400 text-lg leading-relaxed max-w-md">
-                Have questions about Coeur AI? Our team is here to help you revolutionize your cardiac diagnostic workflow.
+                Have questions about Coeur.AI? Our team is here to help you revolutionize your cardiac diagnostic workflow.
               </p>
             </div>
 

@@ -80,7 +80,7 @@ export default function PricingPage() {
             transition={{ duration: 1, delay: 0.8 }}
             className="mt-2 text-slate-400 text-lg md:text-xl max-w-lg mx-auto"
           >
-            We are finalizing our flexible plans to ensure Coeur AI brings maximum value to your practice. Check back shortly.
+            We are finalizing our flexible plans to ensure Coeur.AI brings maximum value to your practice. Check back shortly.
           </motion.p>
         </div>
       </main>

@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Coeur AI — AI-Powered Cardiac & Respiratory Diagnostics',
-  description: 'Coeur AI transforms your smartphone into a powerful diagnostic tool. Advanced AI analysis of heart and lung sounds for clinicians and health-conscious individuals.',
+  title: 'Coeur.AI — AI-Powered Cardiac & Respiratory Diagnostics',
+  description: 'Coeur.AI transforms your smartphone into a powerful diagnostic tool. Advanced AI analysis of heart and lung sounds for clinicians and health-conscious individuals.',
 };
 
 export default function RootLayout({

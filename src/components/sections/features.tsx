@@ -21,7 +21,7 @@ const useCases: UseCase[] = [
     title: "Rural Healthcare",
     description: "In most villages, the nearest cardiologist is hours away. A health worker with Coeur.AI can record a heart or lung sound on the spot.",
     details: "Get an instant AI read on conditions like TB, pneumonia, asthma, COPD, or heart arrhythmia, and flag the patient for referral before things get worse. No waiting, no travel, no guessing. For families who’d otherwise skip a checkup, this could be the difference between catching something early and catching it too late.",
-    image: "/f1.jpg",
+    image: "/rs.jpeg",
     imageAlt: "Healthcare worker in a rural setting checking a patient",
   },
   {
@@ -30,7 +30,7 @@ const useCases: UseCase[] = [
     title: "Post-Operative Patients",
     description: "Recovery after a heart surgery, angioplasty, or stent placement doesn’t end when the patient leaves the hospital.",
     details: "Coeur.AI lets doctors track how the heart sounds week after week, catching early signs of arrhythmia or other irregularities that might otherwise go unnoticed between follow-up visits. Patients get peace of mind, and doctors get a clearer picture of recovery without needing the patient back in the OPD every time.",
-    image: "/f2.jpg",
+    image: "/pa.jpeg",
     imageAlt: "Post-operative patient monitoring home care",
   },
   {
@@ -39,7 +39,7 @@ const useCases: UseCase[] = [
     title: "Doctors",
     description: "Every physician develops their own ear over years of practice. Coeur.AI doesn’t replace that — it backs it up.",
     details: "A quick recording, an AI-assisted read for TB, pneumonia, asthma, COPD, or arrhythmia, and the doctor still makes the final call. It’s especially useful during busy OPD hours, when a faster, more consistent first read can help prioritize which patients need closer attention.",
-    image: "/f3.jpg",
+    image: "/an.jpeg",
     imageAlt: "Doctor in clinic using digital stethoscope tool",
   },
   {

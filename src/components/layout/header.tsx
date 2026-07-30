@@ -34,13 +34,13 @@ export default function Header() {
         <div className="container mx-auto flex h-[72px] items-center justify-between px-6 md:px-8 max-w-[1400px]">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Coeur AI home">
+          <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Coeur.AI home">
             <div className="h-10 w-10 rounded-md bg-[#1e40af] flex items-center justify-center">
               <img src="/co-log.png" className="h-6 w-6 object-contain brightness-0 invert" alt="" aria-hidden="true" />
             </div>
             <div className="flex flex-col leading-none">
               <span className="text-[20px] font-bold text-[#0d0d0d] tracking-tight">
-                Coeur AI<sup className="text-[10px] font-normal">®</sup>
+                Coeur.AI<sup className="text-[10px] font-normal">®</sup>
               </span>
               <span className="text-[9px] font-medium text-[#6b7280] tracking-wide">
                 by LogicBoots
@@ -101,7 +101,7 @@ export default function Header() {
             <div className="h-10 w-10 rounded-md bg-[#1e40af] flex items-center justify-center">
               <img src="/co-log.png" className="h-6 w-6 object-contain brightness-0 invert" alt="" aria-hidden="true" />
             </div>
-            <span className="text-[20px] font-bold text-[#0d0d0d]">Coeur AI</span>
+            <span className="text-[20px] font-bold text-[#0d0d0d]">Coeur.AI</span>
           </Link>
           <button
             className="p-2 text-[#374151] hover:text-[#0d0d0d] transition-colors"

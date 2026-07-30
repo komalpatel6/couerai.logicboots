@@ -9,14 +9,14 @@ const articles = [
     date: "May 12, 2025",
     title: "AI-Based Auscultation Analysis Improves COPD Detection Rate by 38% in Rural Pilot Study.",
     excerpt:
-      "A pilot program across three district health centers in Rajasthan showed that Coeur AI's PCG engine caught COPD patterns missed by standard stethoscopes in more than a third of cases.",
+      "A pilot program across three district health centers in Rajasthan showed that Coeur.AI's PCG engine caught COPD patterns missed by standard stethoscopes in more than a third of cases.",
     image: "/q1.png",
     href: "#",
   },
   {
     tag: "Product Update",
     date: "March 3, 2025",
-    title: "Coeur AI v2.4 Launches with Bio-Sense Terminal and Active Artifact Cancellation.",
+    title: "Coeur.AI v2.4 Launches with Bio-Sense Terminal and Active Artifact Cancellation.",
     excerpt:
       "The latest release brings a redesigned professional monitoring interface, real-time pulmonary audio isolation, and expanded multilingual support across five languages.",
     image: "/q2.png",
@@ -25,9 +25,9 @@ const articles = [
   {
     tag: "Partnership",
     date: "January 18, 2025",
-    title: "LogicBoots Joins Mass Robotics Hub in Boston to Accelerate Coeur AI's US Expansion.",
+    title: "LogicBoots Joins Mass Robotics Hub in Boston to Accelerate Coeur.AI's US Expansion.",
     excerpt:
-      "The partnership gives the team access to Mass Robotics' engineering network and clinical advisors as Coeur AI prepares for FDA-pathway discussions and US hospital pilots.",
+      "The partnership gives the team access to Mass Robotics' engineering network and clinical advisors as Coeur.AI prepares for FDA-pathway discussions and US hospital pilots.",
     image: "/q3.png",
     href: "#",
   },
@@ -43,7 +43,7 @@ export default function NewsSection() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <h2 className="text-[32px] md:text-[40px] font-bold text-[#0a1a4d] leading-tight tracking-tight">
-                The latest from Coeur AI
+                The latest from Coeur.AI
               </h2>
             </div>
             <Link href="#" className="inline-flex items-center gap-2 text-[14px] font-bold text-[#0052ff] hover:text-[#0040d0] transition-colors group hidden md:inline-flex">

@@ -60,12 +60,12 @@ export default function Footer() {
           
           {/* Col 1: Logo & Description */}
           <div className="space-y-4 md:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Coeur AI home">
+            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Coeur.AI home">
               <div className="h-10 w-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
                 <img src="/co-log.png" className="h-6 w-6 object-contain brightness-0 invert" alt="" aria-hidden="true" />
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-[17px] font-bold text-white tracking-tight">Coeur AI</span>
+                <span className="text-[17px] font-bold text-white tracking-tight">Coeur.AI</span>
                 <span className="text-[9px] font-medium text-white/60 uppercase tracking-[0.14em] mt-0.5">
                   LogicBoots
                 </span>
@@ -182,7 +182,7 @@ export default function Footer() {
         {/* Bottom copyright bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[12px] text-white/60">
           <p>
-            Copyright &copy; {new Date().getFullYear()} Coeur AI | Powered by LogicBoots
+            Copyright &copy; {new Date().getFullYear()} Coeur.AI | Powered by LogicBoots
           </p>
           <div className="flex gap-4">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>

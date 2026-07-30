@@ -6,29 +6,29 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is Coeur AI?",
+    question: "What is Coeur.AI?",
     answer:
-      "Coeur AI is an AI-powered cardiac and respiratory diagnostic platform that transforms your smartphone into a clinical-grade auscultation tool when paired with a compatible digital stethoscope. It analyzes phonocardiogram (PCG) sounds to surface preliminary insights for conditions like Hypertension, Arrhythmia, Asthma, COPD, and Pneumonia — with real-time ECG visualization and instant PDF reports.",
+      "Coeur.AI is an AI-powered cardiac and respiratory diagnostic platform that transforms your smartphone into a clinical-grade auscultation tool when paired with a compatible digital stethoscope. It analyzes phonocardiogram (PCG) sounds to surface preliminary insights for conditions like Hypertension, Arrhythmia, Asthma, COPD, and Pneumonia — with real-time ECG visualization and instant PDF reports.",
   },
   {
-    question: "Is it safe to use Coeur AI for patient data?",
+    question: "Is it safe to use Coeur.AI for patient data?",
     answer:
-      "Yes. All health data is processed locally on-device using encrypted HL7 standards. No raw audio or personally identifiable patient data is transmitted to external servers. Coeur AI is designed in alignment with HIPAA privacy principles and applicable data protection regulations. Your data stays on your device.",
+      "Yes. All health data is processed locally on-device using encrypted HL7 standards. No raw audio or personally identifiable patient data is transmitted to external servers. Coeur.AI is designed in alignment with HIPAA privacy principles and applicable data protection regulations. Your data stays on your device.",
   },
   {
-    question: "Which digital stethoscopes does Coeur AI support?",
+    question: "Which digital stethoscopes does Coeur.AI support?",
     answer:
-      "Coeur AI supports a range of compatible digital stethoscopes that connect via WiFi or Bluetooth. Contact our team via the Request Demo form for an up-to-date compatibility list and to confirm your specific device.",
+      "Coeur.AI supports a range of compatible digital stethoscopes that connect via WiFi or Bluetooth. Contact our team via the Request Demo form for an up-to-date compatibility list and to confirm your specific device.",
   },
   {
-    question: "What conditions can Coeur AI detect?",
+    question: "What conditions can Coeur.AI detect?",
     answer:
-      "Coeur AI's AI engine recognizes patterns across two modules:\n\nHeart Module: Hypertension, Arrhythmia, Heart Murmurs, Valve Disorders, Tachycardia, Bradycardia.\nLung Module: Asthma, COPD, Pneumonia, Bronchitis, Pleural Effusion patterns.\n\nFull detection coverage varies by model version and region.",
+      "Coeur.AI's AI engine recognizes patterns across two modules:\n\nHeart Module: Hypertension, Arrhythmia, Heart Murmurs, Valve Disorders, Tachycardia, Bradycardia.\nLung Module: Asthma, COPD, Pneumonia, Bronchitis, Pleural Effusion patterns.\n\nFull detection coverage varies by model version and region.",
   },
   {
-    question: "Does Coeur AI work without an internet connection?",
+    question: "Does Coeur.AI work without an internet connection?",
     answer:
-      "Yes. Coeur AI's core AI analysis runs entirely on-device, making it fully functional in low- or no-connectivity environments — critical for rural clinics and field deployments. When a connection is available, the app syncs data and updates models automatically.",
+      "Yes. Coeur.AI's core AI analysis runs entirely on-device, making it fully functional in low- or no-connectivity environments — critical for rural clinics and field deployments. When a connection is available, the app syncs data and updates models automatically.",
   },
   {
     question: "What does the PDF report include?",
@@ -36,14 +36,14 @@ const faqs = [
       "Each report includes: AI diagnostic findings, per-condition confidence scores, heart rate statistics, risk assessment flags, and a session timestamp log. Reports are formatted for easy sharing with referring physicians or inclusion in patient records.",
   },
   {
-    question: "Is Coeur AI a replacement for a cardiologist?",
+    question: "Is Coeur.AI a replacement for a cardiologist?",
     answer:
-      "No. Coeur AI is a clinical decision support tool — it augments the clinician's judgment, not replaces it. All outputs are preliminary diagnostic insights intended to assist qualified healthcare professionals. Always consult a licensed medical professional before making any clinical decision.",
+      "No. Coeur.AI is a clinical decision support tool — it augments the clinician's judgment, not replaces it. All outputs are preliminary diagnostic insights intended to assist qualified healthcare professionals. Always consult a licensed medical professional before making any clinical decision.",
   },
   {
     question: "How do I get started?",
     answer:
-      "Download Coeur AI from the Google Play Store (Android) or Apple App Store (iOS). Connect a compatible digital stethoscope, select your diagnostic mode, and start recording. You can also request a personalized demo for your clinic or health system.",
+      "Download Coeur.AI from the Google Play Store (Android) or Apple App Store (iOS). Connect a compatible digital stethoscope, select your diagnostic mode, and start recording. You can also request a personalized demo for your clinic or health system.",
   },
 ];
 

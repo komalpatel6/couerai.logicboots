@@ -49,7 +49,7 @@ export default function HowItWorksSection() {
                 <div className="w-full aspect-[4/5] relative overflow-hidden bg-slate-50">
                   <img
                     src="/coeur_step_connect.png"
-                    alt="Coeur AI App - Capture data"
+                    alt="Coeur.AI App - Capture data"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -73,7 +73,7 @@ export default function HowItWorksSection() {
                 <div className="w-full aspect-[4/5] relative overflow-hidden bg-slate-50">
                   <img
                     src="/coeur_step_record.png"
-                    alt="Coeur AI App - Analyze recording"
+                    alt="Coeur.AI App - Analyze recording"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -97,7 +97,7 @@ export default function HowItWorksSection() {
                 <div className="w-full aspect-[4/5] relative overflow-hidden bg-slate-50">
                   <img
                     src="/coeur_step_analyze.png"
-                    alt="Coeur AI App - Review findings"
+                    alt="Coeur.AI App - Review findings"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -121,7 +121,7 @@ export default function HowItWorksSection() {
                 <div className="w-full aspect-[4/5] relative overflow-hidden bg-slate-50">
                   <img
                     src="/coeur_step_report.png"
-                    alt="Coeur AI App - Take action"
+                    alt="Coeur.AI App - Take action"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -136,7 +136,7 @@ export default function HowItWorksSection() {
           <div className="mt-28">
             <div className="text-center mb-12 px-6">
               <h3 className="text-[28px] md:text-[36px] font-bold text-[#0a1a4d] leading-tight mb-4">
-                Watch the Coeur AI workflow demo
+                Watch the Coeur.AI workflow demo
               </h3>
               <p className="text-[15px] text-slate-500 max-w-2xl mx-auto leading-relaxed">
                 A 2-minute walkthrough of the full clinical workflow — from connecting your digital stethoscope to generating and sharing a comprehensive PDF report with AI findings.

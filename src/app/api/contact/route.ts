@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'Coeur AI <onboarding@resend.dev>', // You can change this once you verify your domain
+      from: 'Coeur.AI <onboarding@resend.dev>', // You can change this once you verify your domain
       to: ['logicboots.officeteam@gmail.com'],
       subject: `New Contact Inquiry: ${subject || 'General Inquiry'}`,
       html: `
