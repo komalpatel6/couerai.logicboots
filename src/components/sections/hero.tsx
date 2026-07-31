@@ -92,24 +92,26 @@ export default function HeroSection() {
             {/* First set of logos */}
             <div className="flex items-center gap-12 px-6 shrink-0">
               <Image src="/dpiit.png" alt="DPIIT" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-              <Image src="/iitrLogo.png" alt="IIT Roorkee" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/iiits.png" alt="IIIT Sonipat" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/meity.png" alt="MeitY" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/stpi.png" alt="STPI" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/tides.png" alt="TIDES" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/metech.png" alt="MassTech" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-              <Image src="/hv.png" alt="Healthcare Partner" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/mid.png" alt="Medical Innovation" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/harvard.png" alt="Harvard" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/mass-robotics.png" alt="Mass Robotics" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
             </div>
             {/* Duplicate set for seamless loop */}
             <div className="flex items-center gap-12 px-6 shrink-0" aria-hidden="true">
               <Image src="/dpiit.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-              <Image src="/iitrLogo.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/iiits.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/meity.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/stpi.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/tides.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/metech.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-              <Image src="/hv.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
               <Image src="/mid.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/harvard.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+              <Image src="/mass-robotics.png" alt="" width={100} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
             </div>
           </div>
         </div>

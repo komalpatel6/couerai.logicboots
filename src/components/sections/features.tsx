@@ -48,7 +48,7 @@ const useCases: UseCase[] = [
     title: "Rehab Centers",
     description: "Cardiac and pulmonary rehab is a slow process, and progress isn’t always easy to see day to day.",
     details: "With Coeur.AI, rehab teams can record and compare a patient’s sounds across sessions — tracking improvement in conditions like COPD, asthma, or arrhythmia — turning 'I think he's improving' into something they can actually show. It gives both the patient and the care team something concrete to track.",
-    image: "/f4.jpg",
+    image: "/rb.jpeg",
     imageAlt: "Patient in physical cardiopulmonary rehabilitation session",
   },
   {

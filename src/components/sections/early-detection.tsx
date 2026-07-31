@@ -66,7 +66,7 @@ export default function ImpactStatsSection() {
                 <img
                   src="/f4.jpg"
                   alt="Digital Stethoscope device"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
 
@@ -112,7 +112,7 @@ export default function ImpactStatsSection() {
                 <img
                   src="/f2.jpg"
                   alt="Coeur.AI mobile application layout on platform"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
 

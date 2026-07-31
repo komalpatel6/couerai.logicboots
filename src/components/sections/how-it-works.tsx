@@ -46,12 +46,14 @@ export default function HowItWorksSection() {
                   </p>
                 </div>
                 {/* Illustration Area (Bottom) */}
-                <div className="w-full aspect-[4/5] relative overflow-hidden bg-slate-50">
-                  <img
-                    src="/coeur_step_connect.png"
-                    alt="Coeur.AI App - Capture data"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div className="px-6 pb-6">
+                  <div className="w-full aspect-[4/5] relative overflow-hidden rounded-2xl bg-slate-50">
+                    <img
+                      src="/coeur_step_connect.png"
+                      alt="Coeur.AI App - Capture data"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -70,12 +72,14 @@ export default function HowItWorksSection() {
                   </p>
                 </div>
                 {/* Illustration Area (Bottom) */}
-                <div className="w-full aspect-[4/5] relative overflow-hidden bg-slate-50">
-                  <img
-                    src="/coeur_step_record.png"
-                    alt="Coeur.AI App - Analyze recording"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div className="px-6 pb-6">
+                  <div className="w-full aspect-[4/5] relative overflow-hidden rounded-2xl bg-slate-50">
+                    <img
+                      src="/coeur_step_record.png"
+                      alt="Coeur.AI App - Analyze recording"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -94,12 +98,14 @@ export default function HowItWorksSection() {
                   </p>
                 </div>
                 {/* Illustration Area (Bottom) */}
-                <div className="w-full aspect-[4/5] relative overflow-hidden bg-slate-50">
-                  <img
-                    src="/coeur_step_analyze.png"
-                    alt="Coeur.AI App - Review findings"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div className="px-6 pb-6">
+                  <div className="w-full aspect-[4/5] relative overflow-hidden rounded-2xl bg-slate-50">
+                    <img
+                      src="/coeur_step_analyze.png"
+                      alt="Coeur.AI App - Review findings"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -118,12 +124,14 @@ export default function HowItWorksSection() {
                   </p>
                 </div>
                 {/* Illustration Area (Bottom) */}
-                <div className="w-full aspect-[4/5] relative overflow-hidden bg-slate-50">
-                  <img
-                    src="/coeur_step_report.png"
-                    alt="Coeur.AI App - Take action"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                <div className="px-6 pb-6">
+                  <div className="w-full aspect-[4/5] relative overflow-hidden rounded-2xl bg-slate-50">
+                    <img
+                      src="/coeur_step_report.png"
+                      alt="Coeur.AI App - Take action"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
                 </div>
               </div>
             </FadeIn>
