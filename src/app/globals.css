@@ -3,38 +3,38 @@
 @tailwind utilities;
 
 /*
-  PMcardio light design system
+  Coeur.AI design system — inspired by LogicBoots.com warm palette
   ─────────────────────────────
-  Background  : pure white        #ffffff
-  Surface     : light gray        #f7f7f8
-  Surface 2   : slightly deeper   #f0f0f2
-  Border      : soft gray         #e4e4e7
-  Primary     : crimson red       #c8102e  (PMcardio brand)
-  Primary dark: deep red          #a50e26
-  Text        : near-black        #0d0d0d
-  Muted text  : cool gray         #6b7280
-  Link/accent : red               #c8102e
+  Background  : warm cream        #EDE8DC
+  Surface     : soft warm white   #F5F0E8
+  Surface 2   : card white        #FFFFFF
+  Border      : warm beige        #D9D0BF
+  Primary     : crimson red       #E8234A  (Coeur.AI brand)
+  Primary dark: deep red          #C4182E
+  Text        : warm near-black   #1C1C1C
+  Muted text  : warm gray         #6B6455
+  Link/accent : red               #E8234A
 */
 
 @layer base {
   :root {
-    --background:    0 0% 100%;          /* #ffffff */
-    --foreground:    0 0% 5%;            /* #0d0d0d */
+    --background:    36 33% 86%;          /* #EDE8DC warm cream */
+    --foreground:    0 0% 11%;            /* #1C1C1C warm near-black */
 
-    --card:          240 5% 97%;         /* #f7f7f8 */
-    --card-foreground: 0 0% 5%;
+    --card:          36 33% 96%;         /* #F9F6F1 warm light */
+    --card-foreground: 0 0% 11%;
 
     --popover:       0 0% 100%;
-    --popover-foreground: 0 0% 5%;
+    --popover-foreground: 0 0% 11%;
 
-    --primary:       351 86% 42%;        /* #c8102e */
+    --primary:       351 86% 42%;        /* #E8234A */
     --primary-foreground: 0 0% 100%;
 
-    --secondary:     240 4% 94%;         /* #f0f0f2 */
-    --secondary-foreground: 0 0% 5%;
+    --secondary:     36 20% 92%;         /* #EDE8DC light */
+    --secondary-foreground: 0 0% 11%;
 
-    --muted:         240 4% 94%;
-    --muted-foreground: 220 9% 44%;      /* #6b7280 */
+    --muted:         36 20% 92%;
+    --muted-foreground: 30 8% 38%;       /* #6B6455 warm gray */
 
     --accent:        351 86% 42%;
     --accent-foreground: 0 0% 100%;
@@ -42,8 +42,8 @@
     --destructive:   0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border:        240 5% 90%;         /* #e4e4e7 */
-    --input:         240 5% 90%;
+    --border:        36 20% 80%;         /* #D9D0BF warm beige border */
+    --input:         36 20% 80%;
     --ring:          351 86% 42%;
 
     --radius: 0.375rem;
@@ -65,6 +65,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: #EDE8DC;
+    color: #1C1C1C;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -83,7 +85,7 @@
   /* Primary — red fill */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
-           rounded-[6px] bg-[#c8102e] text-white font-semibold
+           rounded-[6px] bg-[#E8234A] text-white font-semibold
            text-[14px] leading-none select-none cursor-pointer;
     padding: 0 20px;
     height: 40px;
@@ -94,7 +96,7 @@
                 box-shadow  150ms ease-out;
   }
   .btn-primary:hover {
-    background: #a50e26;
+    background: #C4182E;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(200, 16, 46, 0.35);
   }
@@ -147,12 +149,12 @@
   /* Ghost — text link with arrow */
   .btn-ghost {
     @apply inline-flex items-center gap-1.5
-           text-[13px] font-medium text-[#c8102e]
+           text-[13px] font-medium text-[#E8234A]
            cursor-pointer select-none;
     transition: gap 150ms ease-out, color 150ms ease-out;
   }
   .btn-ghost:hover {
-    color: #a50e26;
+    color: #C4182E;
     gap: 8px; /* arrow shifts right on hover */
   }
 }
@@ -165,7 +167,7 @@
 
   /* Thin top border between sections */
   .section-divider {
-    @apply border-t border-[#e4e4e7];
+    @apply border-t border-[#D9D0BF];
   }
 
   /* Tabular numbers for stat counters */

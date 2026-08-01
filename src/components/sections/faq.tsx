@@ -57,16 +57,16 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-[#e4e4e7]">
+    <div className="border-b border-[#D9D0BF]">
       <button
         onClick={onToggle}
         className="w-full flex items-start justify-between gap-4 py-5 text-left group"
         aria-expanded={isOpen}
       >
-        <span className="text-[15px] md:text-[16px] font-semibold text-[#0d0d0d] leading-snug group-hover:text-[#c8102e] transition-colors">
+        <span className="text-[15px] md:text-[16px] font-semibold text-[#1C1C1C] leading-snug group-hover:text-[#E8234A] transition-colors">
           {item.question}
         </span>
-        <span className="shrink-0 mt-0.5 h-5 w-5 flex items-center justify-center text-[#c8102e]" aria-hidden="true">
+        <span className="shrink-0 mt-0.5 h-5 w-5 flex items-center justify-center text-[#E8234A]" aria-hidden="true">
           {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
         </span>
       </button>
@@ -75,7 +75,7 @@ function FAQItem({
           isOpen ? "max-h-[600px] pb-5 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <p className="text-[14px] md:text-[14.5px] text-[#6b7280] leading-relaxed whitespace-pre-line">
+        <p className="text-[14px] md:text-[14.5px] text-slate-500 leading-relaxed whitespace-pre-line">
           {item.answer}
         </p>
       </div>
@@ -87,11 +87,11 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="section-divider py-20 md:py-28 bg-white">
+    <section id="faq" className="section-divider py-20 md:py-28 bg-[#FDFAF5]">
       <div className="container mx-auto px-5 md:px-8 max-w-4xl">
         <FadeIn>
           <div className="mb-12 text-center">
-            <h2 className="text-[32px] md:text-[44px] font-black leading-[1.1] tracking-[-0.025em] text-[#0d0d0d]">
+            <h2 className="text-[32px] md:text-[44px] font-bold leading-[1.15] tracking-tight text-[#1C1C1C]">
               Frequently Asked Questions
             </h2>
           </div>

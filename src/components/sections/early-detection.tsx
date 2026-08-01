@@ -1,146 +1,135 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { FadeIn } from "@/components/fade-in";
-
-function useCountUp(target: number, duration = 1600, start = false) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!start) return;
-    let startTime: number | null = null;
-    const step = (ts: number) => {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [target, duration, start]);
-  return count;
-}
-
-import { Play, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight, ShieldCheck, Zap,
+  HeartPulse, Activity, Clock, Users, Check
+} from "lucide-react";
 
 export default function ImpactStatsSection() {
   return (
-    <section className="py-20 md:py-28 bg-[#faf7f2]/30 relative overflow-hidden border-t border-slate-100">
-      {/* Background graphic grid */}
-      <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
+    <section className="section-divider py-20 md:py-28 bg-[#FDFAF5]">
+      <div className="container mx-auto px-6 md:px-8 max-w-7xl">
 
-      <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
+        {/* Section Header */}
+        <FadeIn>
+          <div className="text-center mb-16">
+            <h2 className="text-[32px] md:text-[44px] font-bold text-[#1C1C1C] leading-[1.15] tracking-tight max-w-2xl mx-auto">
+              Smarter Cardiac Screening,{" "}
+              <span className="text-[#E8234A]">Without the Complexity</span>
+            </h2>
+          </div>
+        </FadeIn>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
 
-          {/* Left Column: The Challenge */}
-          <FadeIn delay={0}>
-            <div className="group relative bg-white rounded-[32px] p-8 md:p-10 shadow-[0_15px_45px_rgba(10,26,77,0.03)] hover:shadow-[0_25px_60px_rgba(200,16,46,0.05)] transition-all duration-500 flex flex-col justify-between h-full overflow-hidden min-h-[480px]">
-              {/* Subtle card background gradient wash */}
-              <div className="absolute inset-0 bg-gradient-to-br from-transparent to-slate-50/20 pointer-events-none" />
+          {/* ── CARD 1: The Challenge ── */}
+          <FadeIn delay={60}>
+            <div className="group relative bg-[#FDF8F3] rounded-3xl border border-rose-100/60 overflow-hidden h-full hover:shadow-[0_20px_50px_rgba(200,16,46,0.06)] transition-all duration-400">
 
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-100 text-[#c8102e] text-[10px] font-bold tracking-wider uppercase">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#c8102e]" />
-                    The Challenge
-                  </span>
-                </div>
 
-                <h3 className="text-[30px] md:text-[36px] font-extrabold text-[#0a1a4d] leading-[1.15] mb-4 tracking-tight">
-                  Better Screening
-                  <br />
-                  Shouldn’t Be <span className="text-[#c8102e]">Complicated</span>
+
+              <div className="relative z-10 p-8 md:p-10 flex flex-col h-full">
+
+
+
+                {/* Heading */}
+                <h3 className="text-[26px] md:text-[32px] font-bold text-[#1C1C1C] leading-[1.2] tracking-tight mb-4">
+                  Better Screening<br />
+                  Shouldn't Be{" "}
+                  <span className="text-[#E8234A]">Complicated</span>
                 </h3>
 
-                {/* Red divider line */}
-                <div className="w-12 h-[2px] bg-[#c8102e] mb-6 rounded-full" />
+                {/* Thin accent line */}
+                <div className="w-10 h-[2px] bg-[#E8234A]/40 rounded-full mb-6" />
 
-                <p className="text-[14.5px] text-slate-500 leading-relaxed max-w-md">
-                  Heart conditions often need timely attention, but efficient screening isn’t always within
-                  reach. Healthcare professionals need tools that are fast, reliable, and easy to use — not
-                  ones that add extra steps.
+                {/* Body */}
+                <p className="text-[15px] text-slate-500 leading-relaxed mb-10">
+                  Heart conditions often need timely attention, but efficient screening isn't always within
+                  reach. Healthcare professionals need tools that are fast, reliable, and easy to use —
+                  not ones that add extra steps.
                 </p>
-              </div>
 
-              {/* Stethoscope asset placeholder positioned absolutely inside card */}
-              <div className="absolute bottom-4 right-2 w-[145px] h-[160px] pointer-events-none z-0 opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500">
-                <img
-                  src="/f4.jpg"
-                  alt="Digital Stethoscope device"
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
+                {/* Feature list — no boxes, just clean rows */}
+                <ul className="space-y-5 mb-10 flex-1">
+                  {[
+                    { icon: Clock,    text: "Delayed detection puts patients at risk" },
+                    { icon: Users,    text: "Rural areas lack specialist access" },
+                    { icon: Activity, text: "Existing tools add workflow friction" },
+                  ].map(({ icon: Icon, text }) => (
+                    <li key={text} className="flex items-center gap-3.5">
+                      <span className="h-8 w-8 rounded-full bg-rose-50 border border-rose-100 flex items-center justify-center shrink-0">
+                        <Icon className="h-3.5 w-3.5 text-[#E8234A]" />
+                      </span>
+                      <span className="text-[14px] text-slate-600 font-medium">{text}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <div className="relative z-10 mt-12">
-                <span className="inline-flex items-center gap-2 text-[13px] font-bold text-[#c8102e] bg-rose-50/70 border border-rose-100/50 px-4 py-2 rounded-xl">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#c8102e]" />
-                  That’s where Coeur.AI comes in.
-                </span>
+                {/* CTA */}
+                <div className="mt-auto flex items-center gap-2 text-[13.5px] font-bold text-[#E8234A] group-hover:gap-3 transition-all duration-200">
+                  That's where Coeur.AI comes in
+                  <ArrowRight className="h-4 w-4" />
+                </div>
               </div>
             </div>
           </FadeIn>
 
-          {/* Right Column: Meet Coeur.AI */}
-          <FadeIn delay={100}>
-            <div className="group relative bg-gradient-to-br from-[#f0f4ff] to-[#e6eeff]/75 rounded-[32px] p-8 md:p-10 shadow-[0_15px_45px_rgba(10,26,77,0.03)] hover:shadow-[0_25px_60px_rgba(0,82,255,0.06)] transition-all duration-500 flex flex-col justify-between h-full overflow-hidden min-h-[480px]">
+          {/* ── CARD 2: Meet Coeur.AI ── */}
+          <FadeIn delay={120}>
+            <div className="group relative bg-[#F5F0E8] rounded-3xl border border-blue-100/60 overflow-hidden h-full hover:shadow-[0_20px_50px_rgba(10,26,77,0.07)] transition-all duration-400">
 
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-6">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-[#0052ff] text-[10px] font-bold tracking-wider uppercase">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#0052ff] animate-pulse" />
-                    Meet Coeur.AI
-                  </span>
-                </div>
 
-                <h3 className="text-[30px] md:text-[36px] font-extrabold text-[#0a1a4d] leading-[1.15] mb-4 tracking-tight">
-                  AI That Supports
-                  <br />
-                  <span className="text-[#0052ff]">Healthcare Professionals</span>
+
+              <div className="relative z-10 p-8 md:p-10 flex flex-col h-full">
+
+
+
+                {/* Heading */}
+                <h3 className="text-[26px] md:text-[32px] font-bold text-[#1C1C1C] leading-[1.2] tracking-tight mb-4">
+                  AI That Supports<br />
+                  <span className="text-[#E8234A]">Healthcare Professionals</span>
                 </h3>
 
-                {/* Blue divider line */}
-                <div className="w-12 h-[2px] bg-[#0052ff] mb-6 rounded-full" />
+                {/* Thin accent line */}
+                <div className="w-10 h-[2px] bg-[#E8234A]/40 rounded-full mb-6" />
 
-                <p className="text-[14px] text-slate-500 leading-relaxed max-w-sm">
-                  Coeur.AI is an AI-powered cardiac screening device built by <strong className="text-[#0052ff] font-bold">LogicBoots</strong>.
-                  <br /><br />
-                  It analyzes cardiac data and surfaces patterns healthcare professionals can act on — right alongside their own clinical judgment.
+                {/* Body */}
+                <p className="text-[15px] text-slate-500 leading-relaxed mb-10">
+                  Coeur.AI is an AI-powered cardiac screening device built by{" "}
+                  <strong className="text-[#1C1C1C] font-semibold">LogicBoots</strong>.
+                  It analyzes cardiac data and surfaces patterns healthcare professionals can act on —
+                  right alongside their own clinical judgment.
                 </p>
-              </div>
 
-              {/* Phone App on Platform asset positioned absolutely inside card */}
-              <div className="absolute bottom-6 right-2 w-[162px] h-[200px] pointer-events-none z-0 opacity-95 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500">
-                <img
-                  src="/f2.jpg"
-                  alt="Coeur.AI mobile application layout on platform"
-                  className="w-full h-full object-cover rounded-2xl"
-                />
-              </div>
+                {/* Feature check list — no boxes, clean rows */}
+                <ul className="space-y-5 mb-10 flex-1">
+                  {[
+                    "Real-time cardiac sound analysis",
+                    "AI-assisted pattern detection",
+                    "Designed for everyday clinical workflows",
+                  ].map((text) => (
+                    <li key={text} className="flex items-center gap-3.5">
+                      <span className="h-8 w-8 rounded-full bg-[#FDFAF5] border border-blue-100 flex items-center justify-center shrink-0">
+                        <Check className="h-3.5 w-3.5 text-[#E8234A]" />
+                      </span>
+                      <span className="text-[14px] text-slate-600 font-medium">{text}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              {/* Bottom Actions Row */}
-              <div className="relative z-10 mt-12 flex flex-wrap items-center gap-4">
-                {/* Simple to Use action badge */}
-                <div className="flex items-center gap-3 bg-white/90 border border-white px-4 py-2.5 rounded-2xl shadow-sm hover:bg-white transition-colors duration-200 cursor-default">
-                  <div className="h-7 w-7 rounded-full bg-blue-50 flex items-center justify-center text-[#0052ff]">
-                    <Play className="h-3.5 w-3.5 fill-[#0052ff] stroke-[#0052ff] ml-0.5" />
+                {/* Action pills */}
+                <div className="mt-auto flex flex-wrap items-center gap-3">
+                  <div className="inline-flex items-center gap-2 bg-[#FDFAF5] border border-slate-200 px-4 h-10 rounded-xl text-[12.5px] font-semibold text-[#1C1C1C] shadow-sm">
+                    <Zap className="h-3.5 w-3.5 text-[#E8234A]" />
+                    Simple to use
                   </div>
-                  <div>
-                    <p className="text-[10px] font-extrabold text-[#0a1a4d] leading-none mb-0.5 uppercase tracking-wider">Simple to use</p>
-                    <p className="text-[9.5px] text-slate-400 font-medium leading-none">Intuitive. Fast. Efficient.</p>
-                  </div>
-                </div>
-
-                {/* Built for Everyday Healthcare Action Button */}
-                <div className="flex items-center gap-3 bg-[#0052ff] hover:bg-[#0040d0] px-4 py-2.5 rounded-2xl shadow-md transition-colors duration-200 text-white cursor-default">
-                  <div className="h-7 w-7 rounded-full bg-white/10 flex items-center justify-center text-white">
-                    <ShieldCheck className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-extrabold leading-none mb-0.5 uppercase tracking-wider">Built for everyday healthcare</p>
-                    <p className="text-[9.5px] text-white/70 font-medium leading-none">Reliable. Secure. Effective.</p>
+                  <div className="inline-flex items-center gap-2 bg-[#E8234A] hover:bg-[#C4182E] px-4 h-10 rounded-xl text-[12.5px] font-semibold text-white transition-colors duration-150 shadow-[0_4px_14px_rgba(200,16,46,0.25)]">
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                    Built for Healthcare
                   </div>
                 </div>
               </div>
-
             </div>
           </FadeIn>
 

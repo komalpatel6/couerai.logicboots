@@ -4,7 +4,7 @@ import { Bluetooth, BrainCircuit, BarChart3, FileDown } from "lucide-react";
 
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="relative py-24 md:py-32 bg-[#faf7f2]/60 overflow-hidden border-t border-[#e4e4e7]">
+    <section id="how-it-works" className="relative py-24 md:py-32 bg-[#EDE8DC]/60 overflow-hidden border-t border-[#D9D0BF]">
       {/* Background wavy topography pattern (SVG) */}
       <div className="absolute inset-0 opacity-[0.06] pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -19,7 +19,7 @@ export default function HowItWorksSection() {
         {/* Header */}
         <FadeIn>
           <div className="text-center mb-16 md:mb-20">
-            <h2 className="text-[32px] md:text-[42px] font-bold text-[#0a1a4d] leading-none">
+            <h2 className="text-[32px] md:text-[42px] font-bold text-[#1C1C1C] leading-none">
               How it Works
             </h2>
           </div>
@@ -34,13 +34,13 @@ export default function HowItWorksSection() {
             
             {/* Step 1: Capture */}
             <FadeIn delay={0}>
-              <div className="group relative bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.15)] flex flex-col justify-between">
+              <div className="group relative bg-[#FDFAF5] rounded-3xl overflow-hidden border border-transparent shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.15)] flex flex-col justify-between">
                 {/* Info Area (Top) */}
                 <div className="p-6 text-left">
                   <span className="inline-flex px-2.5 py-0.5 rounded-full bg-[#0052ff] text-white text-[9px] font-bold shadow-sm tracking-wider uppercase mb-3">
                     Step 1
                   </span>
-                  <h3 className="text-[22px] font-bold text-[#0a1a4d] mb-2 group-hover:text-blue-600 transition-colors">Capture</h3>
+                  <h3 className="text-[22px] font-bold text-[#1C1C1C] mb-2 group-hover:text-[#E8234A] transition-colors">Capture</h3>
                   <p className="text-[13px] text-slate-500 leading-relaxed min-h-[52px]">
                     Record cardiac data using a compatible device — no extra hardware, no complicated setup.
                   </p>
@@ -60,13 +60,13 @@ export default function HowItWorksSection() {
 
             {/* Step 2: Analyze */}
             <FadeIn delay={100}>
-              <div className="group relative bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.15)] flex flex-col justify-between">
+              <div className="group relative bg-[#FDFAF5] rounded-3xl overflow-hidden border border-transparent shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.15)] flex flex-col justify-between">
                 {/* Info Area (Top) */}
                 <div className="p-6 text-left">
                   <span className="inline-flex px-2.5 py-0.5 rounded-full bg-[#10b981] text-white text-[9px] font-bold shadow-sm tracking-wider uppercase mb-3">
                     Step 2
                   </span>
-                  <h3 className="text-[22px] font-bold text-[#0a1a4d] mb-2 group-hover:text-emerald-600 transition-colors">Analyze</h3>
+                  <h3 className="text-[22px] font-bold text-[#1C1C1C] mb-2 group-hover:text-[#E8234A] transition-colors">Analyze</h3>
                   <p className="text-[13px] text-slate-500 leading-relaxed min-h-[52px]">
                     Coeur.AI’s AI processes the recording and flags patterns worth a closer look.
                   </p>
@@ -86,13 +86,13 @@ export default function HowItWorksSection() {
 
             {/* Step 3: Review */}
             <FadeIn delay={200}>
-              <div className="group relative bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_35px_rgba(10,26,77,0.04)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(200,16,46,0.18)] flex flex-col justify-between">
+              <div className="group relative bg-[#FDFAF5] rounded-3xl overflow-hidden border border-transparent shadow-[0_10px_35px_rgba(10,26,77,0.04)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(200,16,46,0.18)] flex flex-col justify-between">
                 {/* Info Area (Top) */}
                 <div className="p-6 text-left">
                   <span className="inline-flex px-2.5 py-0.5 rounded-full bg-[#7c3aed] text-white text-[9px] font-bold shadow-sm tracking-wider uppercase mb-3">
                     Step 3
                   </span>
-                  <h3 className="text-[22px] font-bold text-[#0a1a4d] mb-2 group-hover:text-purple-600 transition-colors">Review</h3>
+                  <h3 className="text-[22px] font-bold text-[#1C1C1C] mb-2 group-hover:text-[#E8234A] transition-colors">Review</h3>
                   <p className="text-[13px] text-slate-500 leading-relaxed min-h-[52px]">
                     Healthcare professionals review the findings alongside their own expertise. Coeur.AI supports the decision — it doesn’t replace it.
                   </p>
@@ -112,13 +112,13 @@ export default function HowItWorksSection() {
 
             {/* Step 4: Act */}
             <FadeIn delay={300}>
-              <div className="group relative bg-white rounded-3xl overflow-hidden border border-transparent shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.15)] flex flex-col justify-between">
+              <div className="group relative bg-[#FDFAF5] rounded-3xl overflow-hidden border border-transparent shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(168,85,247,0.15)] flex flex-col justify-between">
                 {/* Info Area (Top) */}
                 <div className="p-6 text-left">
                   <span className="inline-flex px-2.5 py-0.5 rounded-full bg-[#ff9100] text-white text-[9px] font-bold shadow-sm tracking-wider uppercase mb-3">
                     Step 4
                   </span>
-                  <h3 className="text-[22px] font-bold text-[#0a1a4d] mb-2 group-hover:text-amber-600 transition-colors">Act</h3>
+                  <h3 className="text-[22px] font-bold text-[#1C1C1C] mb-2 group-hover:text-[#E8234A] transition-colors">Act</h3>
                   <p className="text-[13px] text-slate-500 leading-relaxed min-h-[52px]">
                     Move forward with more context, and more confidence.
                   </p>
@@ -143,7 +143,7 @@ export default function HowItWorksSection() {
         <FadeIn delay={400}>
           <div className="mt-28">
             <div className="text-center mb-12 px-6">
-              <h3 className="text-[28px] md:text-[36px] font-bold text-[#0a1a4d] leading-tight mb-4">
+              <h3 className="text-[28px] md:text-[36px] font-bold text-[#1C1C1C] leading-tight mb-4">
                 Watch the Coeur.AI workflow demo
               </h3>
               <p className="text-[15px] text-slate-500 max-w-2xl mx-auto leading-relaxed">

@@ -9,10 +9,10 @@ export default function CtaSection() {
         
         {/* Header copy */}
         <FadeIn>
-          <h2 className="text-[36px] md:text-[50px] font-bold leading-tight tracking-tight text-[#0a1a4d] mb-4">
+          <h2 className="text-[36px] md:text-[50px] font-bold leading-tight tracking-tight text-[#1C1C1C] mb-4">
             Let’s Make Cardiac Screening Smarter
           </h2>
-          <p className="text-[16px] md:text-[18px] text-[#0a1a4d]/75 leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-[16px] md:text-[18px] text-[#1C1C1C]/75 leading-relaxed max-w-2xl mx-auto mb-10">
             See how Coeur.AI brings AI and healthcare together to support faster, more informed screening.
           </p>
         </FadeIn>
@@ -35,7 +35,7 @@ export default function CtaSection() {
               href="https://play.google.com/store/apps/details?id=com.logicboots.coeurai"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-slate-200 bg-white hover:border-[#0052ff]/30 hover:shadow-md transition-all duration-200"
+              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-slate-200 bg-[#FDFAF5] hover:border-[#0052ff]/30 hover:shadow-md transition-all duration-200"
               aria-label="Download Coeur.AI on Google Play"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#0a1a4d] shrink-0" aria-hidden="true">
@@ -43,13 +43,13 @@ export default function CtaSection() {
               </svg>
               <div className="text-left">
                 <p className="text-[9px] text-slate-400 font-bold leading-none mb-0.5 uppercase tracking-wider">GET IT ON</p>
-                <p className="text-[14px] font-semibold text-[#0a1a4d] leading-none">Google Play</p>
+                <p className="text-[14px] font-semibold text-[#1C1C1C] leading-none">Google Play</p>
               </div>
             </Link>
 
             {/* Apple App Store badge — coming soon */}
             <span
-              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-slate-100 bg-slate-50/50 cursor-not-allowed opacity-60 select-none"
+              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-[#D9D0BF]/50 bg-slate-50/50 cursor-not-allowed opacity-60 select-none"
               title="App Store — Coming Soon"
               aria-label="Download on the App Store (coming soon)"
             >

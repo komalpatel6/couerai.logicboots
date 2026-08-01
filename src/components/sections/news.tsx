@@ -35,18 +35,18 @@ const articles = [
 
 export default function NewsSection() {
   return (
-    <section className="section-divider py-20 md:py-28 bg-white">
+    <section className="section-divider py-20 md:py-28 bg-[#FDFAF5]">
       <div className="container mx-auto px-5 md:px-8 max-w-7xl">
 
         {/* Header row */}
         <FadeIn>
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h2 className="text-[32px] md:text-[40px] font-bold text-[#0a1a4d] leading-tight tracking-tight">
+              <h2 className="text-[32px] md:text-[40px] font-bold text-[#1C1C1C] leading-tight tracking-tight">
                 The latest from Coeur.AI
               </h2>
             </div>
-            <Link href="#" className="inline-flex items-center gap-2 text-[14px] font-bold text-[#0052ff] hover:text-[#0040d0] transition-colors group hidden md:inline-flex">
+            <Link href="#" className="inline-flex items-center gap-2 text-[14px] font-bold text-[#E8234A] hover:text-[#C4182E] transition-colors group hidden md:inline-flex">
               View all <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
@@ -58,7 +58,7 @@ export default function NewsSection() {
             <FadeIn key={article.title} delay={i * 80}>
               <Link
                 href={article.href}
-                className="group flex flex-col bg-white rounded-3xl border border-slate-100 overflow-hidden hover:border-[#0052ff]/30 hover:shadow-[0_20px_40px_rgba(10,26,77,0.04)] transition-all duration-300 h-full"
+                className="group flex flex-col bg-[#FDFAF5] rounded-3xl border border-[#D9D0BF]/50 overflow-hidden hover:border-[#E8234A]/20 hover:shadow-[0_20px_40px_rgba(10,26,77,0.04)] transition-all duration-300 h-full"
               >
                 {/* Thumbnail */}
                 <div className="relative h-48 overflow-hidden bg-slate-50">
@@ -74,19 +74,19 @@ export default function NewsSection() {
                 {/* Body */}
                 <div className="flex flex-col flex-1 p-6">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-[10px] font-bold text-[#0052ff] uppercase tracking-wider">
+                    <span className="text-[10px] font-bold text-[#E8234A] uppercase tracking-wider">
                       {article.tag}
                     </span>
                     <span className="text-slate-300">·</span>
                     <time className="text-[12px] text-slate-500 font-medium">{article.date}</time>
                   </div>
-                  <h3 className="text-[16px] font-bold text-[#0a1a4d] leading-snug mb-3 group-hover:text-[#0052ff] transition-colors">
+                  <h3 className="text-[16px] font-bold text-[#1C1C1C] leading-snug mb-3 group-hover:text-[#E8234A] transition-colors">
                     {article.title}
                   </h3>
                   <p className="text-[13px] text-slate-500 leading-relaxed line-clamp-3 flex-1">
                     {article.excerpt}
                   </p>
-                  <div className="inline-flex items-center gap-1.5 mt-6 text-[13px] font-bold text-[#0a1a4d] group-hover:text-[#0052ff] transition-colors">
+                  <div className="inline-flex items-center gap-1.5 mt-6 text-[13px] font-bold text-[#1C1C1C] group-hover:text-[#E8234A] transition-colors">
                     Read more <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
