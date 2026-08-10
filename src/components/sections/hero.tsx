@@ -26,7 +26,7 @@ export default function HeroSection() {
 
         {/* Main headline — compact, bold, white with gradient highlight */}
         <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[54px] xl:text-[60px] font-bold leading-[1.12] tracking-[-0.025em] text-white max-w-4xl mb-6">
-          Smarter Cardiac Screening,
+          Smarter Cardio Respiratory,
           <br />
           <span className="bg-gradient-to-r from-[#60a5fa] via-[#93c5fd] to-[#3b82f6] bg-clip-text text-transparent">
             Powered by AI
