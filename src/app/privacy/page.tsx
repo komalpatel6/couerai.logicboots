@@ -10,51 +10,51 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#EDE8DC]/40 text-[#1C1C1C] font-sans">
+    <div className="flex flex-col min-h-screen bg-[#F8F5EE] text-[#1C1C1C] font-sans">
       <Header />
 
       <main className="flex-grow container mx-auto px-6 md:px-8 py-16 lg:py-24 max-w-4xl mt-[72px]">
-        <div className="bg-white border border-[#D9D0BF]/60 rounded-3xl p-8 md:p-12 shadow-[0_10px_35px_rgba(0,0,0,0.03)] space-y-8">
+        <div className="bg-white border border-[#E5DFD3] rounded-3xl p-8 md:p-12 shadow-sm space-y-8">
           
-          <div className="border-b border-slate-100 pb-6">
-            <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-100 px-3.5 py-1 rounded-full text-[12px] font-bold tracking-wider text-[#E8234A] uppercase mb-3">
+          <div className="border-b border-[#E5DFD3]/60 pb-6">
+            <div className="inline-flex items-center gap-2 bg-[#E8234A]/10 border border-[#E8234A]/20 px-3.5 py-1 rounded-full text-[12px] font-bold tracking-wider text-[#E8234A] uppercase mb-3">
               Patient Data Protection
             </div>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-[#1C1C1C]">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#1C1C1C] tracking-tight">
               Privacy Policy &amp; Data Security
             </h1>
-            <p className="text-sm text-slate-500 mt-2">
+            <p className="text-sm text-[#6B7280] mt-2">
               Last updated: September 2026 &bull; Coeur.AI by LogicBoots
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-2xl bg-[#FDFAF5] border border-[#D9D0BF]/50 flex items-start gap-3.5">
-              <div className="h-9 w-9 rounded-lg bg-rose-50 flex items-center justify-center text-[#E8234A] shrink-0">
+            <div className="p-4 rounded-2xl bg-[#F8F5EE]/60 border border-[#E5DFD3] flex items-start gap-3.5">
+              <div className="h-9 w-9 rounded-xl bg-[#E8234A]/10 flex items-center justify-center text-[#E8234A] shrink-0">
                 <Lock className="h-4 w-4" />
               </div>
               <div>
                 <h4 className="text-sm font-bold text-[#1C1C1C]">On-Device Processing</h4>
-                <p className="text-xs text-slate-600 mt-0.5">
+                <p className="text-xs text-[#6B7280] mt-0.5">
                   Auscultation PCG waveforms are analyzed locally on your device using encrypted edge models.
                 </p>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-[#FDFAF5] border border-[#D9D0BF]/50 flex items-start gap-3.5">
-              <div className="h-9 w-9 rounded-lg bg-rose-50 flex items-center justify-center text-[#E8234A] shrink-0">
+            <div className="p-4 rounded-2xl bg-[#F8F5EE]/60 border border-[#E5DFD3] flex items-start gap-3.5">
+              <div className="h-9 w-9 rounded-xl bg-[#E8234A]/10 flex items-center justify-center text-[#E8234A] shrink-0">
                 <EyeOff className="h-4 w-4" />
               </div>
               <div>
                 <h4 className="text-sm font-bold text-[#1C1C1C]">No Remote Audio Retention</h4>
-                <p className="text-xs text-slate-600 mt-0.5">
+                <p className="text-xs text-[#6B7280] mt-0.5">
                   Raw patient heart and lung sounds are never uploaded to public clouds without explicit practitioner opt-in.
                 </p>
               </div>
             </div>
           </div>
 
-          <section className="space-y-4 text-sm text-slate-700 leading-relaxed">
+          <section className="space-y-4 text-sm text-[#4B5563] leading-relaxed">
             <h2 className="text-xl font-bold text-[#1C1C1C]">1. Introduction &amp; Scope</h2>
             <p>
               Coeur.AI (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;platform&rdquo;), operated by LogicBoots, provides clinical decision support tools and phonocardiogram (PCG) acoustic analysis software for licensed medical practitioners and clinical institutions. This Privacy Policy details how data is processed, protected, and utilized when using Coeur.AI applications and digital stethoscope integrations.

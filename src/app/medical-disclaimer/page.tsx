@@ -10,27 +10,27 @@ export const metadata: Metadata = {
 
 export default function MedicalDisclaimerPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#EDE8DC]/40 text-[#1C1C1C] font-sans">
+    <div className="flex flex-col min-h-screen bg-[#F8F5EE] text-[#1C1C1C] font-sans">
       <Header />
 
       <main className="flex-grow container mx-auto px-6 md:px-8 py-16 lg:py-24 max-w-4xl mt-[72px]">
-        <div className="bg-white border border-[#D9D0BF]/60 rounded-3xl p-8 md:p-12 shadow-[0_10px_35px_rgba(0,0,0,0.03)] space-y-8">
+        <div className="bg-white border border-[#E5DFD3] rounded-3xl p-8 md:p-12 shadow-sm space-y-8">
           
-          <div className="border-b border-slate-100 pb-6">
+          <div className="border-b border-[#E5DFD3]/60 pb-6">
             <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 px-3.5 py-1 rounded-full text-[12px] font-bold tracking-wider text-amber-800 uppercase mb-3">
               Regulatory &amp; Clinical Notice
             </div>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-[#1C1C1C]">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#1C1C1C] tracking-tight">
               Medical &amp; Regulatory Disclaimer
             </h1>
-            <p className="text-sm text-slate-500 mt-2">
+            <p className="text-sm text-[#6B7280] mt-2">
               Clinical Decision Support (CDS) System Guidelines &bull; Coeur.AI
             </p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-rose-50/70 border border-rose-200/80 flex items-start gap-4">
+          <div className="p-5 rounded-2xl bg-[#E8234A]/5 border border-[#E8234A]/20 flex items-start gap-4">
             <AlertTriangle className="h-6 w-6 text-[#E8234A] shrink-0 mt-0.5" />
-            <div className="text-sm text-rose-950 leading-relaxed">
+            <div className="text-sm text-[#1C1C1C] leading-relaxed">
               <strong className="block font-bold text-[#E8234A] text-base mb-1">
                 Important Clinical Notice:
               </strong>
@@ -38,7 +38,7 @@ export default function MedicalDisclaimerPage() {
             </div>
           </div>
 
-          <section className="space-y-6 text-sm text-slate-700 leading-relaxed">
+          <section className="space-y-6 text-sm text-[#4B5563] leading-relaxed">
             <div>
               <h2 className="text-lg font-bold text-[#1C1C1C] mb-2">1. Intended Use &amp; User Qualifications</h2>
               <p>

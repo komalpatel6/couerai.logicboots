@@ -3,22 +3,24 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, ArrowRight, ShieldCheck, Stethoscope } from "lucide-react";
 
 const navLinks = [
-  { href: "/#features", label: "Features", hasDropdown: false },
-  { href: "/#how-it-works", label: "How It Works", hasDropdown: false },
-  { href: "/#global-presence", label: "Global Presence", hasDropdown: false },
-  { href: "/pricing", label: "Pricing", hasDropdown: false },
-  { href: "/contact", label: "Contact", hasDropdown: false },
+  { href: "/#features", label: "Features" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#clinical-evidence", label: "Clinical Evidence" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    const onScroll = () => setIsScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -37,17 +39,17 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-[0_2px_12px_rgba(0,0,0,0.06)] border-b border-[#EDE8DC]"
-            : "bg-[#FDFAF5]/90 backdrop-blur-sm border-b border-[#EDE8DC]/50"
+            ? "bg-[#F8F5EE]/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] border-b border-[#E5DFD3]"
+            : "bg-[#F8F5EE]/75 backdrop-blur-sm border-b border-[#E5DFD3]/40"
         }`}
       >
-        <div className="container mx-auto flex h-[72px] items-center justify-between px-6 md:px-8 max-w-[1400px]">
+        <div className="container mx-auto flex h-[72px] items-center justify-between px-6 md:px-8 max-w-[1360px]">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group" aria-label="Coeur.AI home">
-            <div className="h-10 w-10 rounded-xl bg-[#E8234A] flex items-center justify-center shadow-sm group-hover:bg-[#C4182E] transition-colors">
+          <Link href="/" className="flex items-center gap-3 shrink-0 group" aria-label="Coeur.AI home">
+            <div className="h-10 w-10 rounded-xl bg-[#E8234A] flex items-center justify-center shadow-[0_2px_10px_rgba(232,35,74,0.3)] group-hover:bg-[#C4182E] transition-all duration-200 group-hover:scale-[1.03]">
               <Image
                 src="/co-log.png"
                 width={24}
@@ -58,62 +60,77 @@ export default function Header() {
               />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-[20px] font-bold text-[#1C1C1C] tracking-tight group-hover:text-[#E8234A] transition-colors">
-                Coeur.AI<sup className="text-[10px] font-normal text-slate-400">®</sup>
-              </span>
-              <span className="text-[9px] font-medium text-[#6B6455] tracking-wide uppercase">
-                by LogicBoots
+              <div className="flex items-center gap-1.5">
+                <span className="text-[19px] font-bold text-[#1C1C1C] tracking-tight group-hover:text-[#E8234A] transition-colors">
+                  Coeur.AI
+                </span>
+                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-[#E8234A]/10 text-[#E8234A] tracking-wide">
+                  PRO
+                </span>
+              </div>
+              <span className="text-[9.5px] font-medium text-[#6B7280] tracking-wider uppercase mt-0.5">
+                AI Cardiac Auscultation
               </span>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Main navigation">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="group flex items-center gap-1 text-[14.5px] font-medium text-[#1C1C1C]/80 hover:text-[#E8234A] transition-colors duration-150"
-              >
-                {link.label}
-                {link.hasDropdown && (
-                  <ChevronDown className="h-3.5 w-3.5 text-[#9ca3af] group-hover:text-[#E8234A]" />
-                )}
-              </Link>
-            ))}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-sm border border-[#E5DFD3]/80 shadow-sm" aria-label="Main navigation">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`px-4 py-1.5 rounded-full text-[13.5px] font-medium transition-all duration-150 ${
+                    isActive
+                      ? "text-[#E8234A] bg-[#E8234A]/8 font-semibold"
+                      : "text-[#1C1C1C]/85 hover:text-[#E8234A] hover:bg-black/[0.03]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/demo"
-              className="inline-flex items-center gap-2 h-10 px-5 rounded-xl bg-[#E8234A] hover:bg-[#C4182E] text-white text-[13.5px] font-semibold transition-all duration-150 shadow-sm hover:shadow-[0_4px_14px_rgba(232,35,74,0.3)] hover:-translate-y-0.5"
+              href="/contact"
+              className="text-[13.5px] font-medium text-[#1C1C1C] hover:text-[#E8234A] px-3.5 py-2 transition-colors"
             >
-              Get Access
+              Sign In
+            </Link>
+            <Link
+              href="/demo"
+              className="btn-primary h-10 px-5 text-[13.5px]"
+            >
+              <span>Request Demo</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden p-2 text-[#1C1C1C] hover:text-[#E8234A] transition-colors focus:outline-none focus:ring-2 focus:ring-[#E8234A]/30 rounded-lg"
+            className="lg:hidden p-2.5 text-[#1C1C1C] hover:text-[#E8234A] transition-colors focus:outline-none focus:ring-2 focus:ring-[#E8234A]/30 rounded-xl bg-white/80 border border-[#E5DFD3]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
           >
-            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </header>
 
-      {/* Mobile menu */}
+      {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col bg-[#FDFAF5] transition-all duration-300 ease-in-out lg:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col bg-[#F8F5EE] transition-all duration-300 ease-in-out lg:hidden ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!menuOpen}
       >
-        <div className="flex h-[72px] items-center justify-between px-6 border-b border-[#EDE8DC]">
+        <div className="flex h-[72px] items-center justify-between px-6 border-b border-[#E5DFD3]">
           <Link href="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)}>
             <div className="h-10 w-10 rounded-xl bg-[#E8234A] flex items-center justify-center">
               <Image
@@ -124,37 +141,59 @@ export default function Header() {
                 alt="Coeur.AI Logo"
               />
             </div>
-            <span className="text-[20px] font-bold text-[#1C1C1C]">Coeur.AI</span>
+            <div className="flex flex-col">
+              <span className="text-[19px] font-bold text-[#1C1C1C]">Coeur.AI</span>
+              <span className="text-[9.5px] font-medium text-[#6B7280] tracking-wide uppercase">by LogicBoots</span>
+            </div>
           </Link>
           <button
-            className="p-2 text-[#1C1C1C] hover:text-[#E8234A] transition-colors"
+            className="p-2.5 text-[#1C1C1C] hover:text-[#E8234A] transition-colors rounded-xl bg-white border border-[#E5DFD3]"
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" />
           </button>
         </div>
 
-        <nav className="flex-1 flex flex-col px-6 pt-4 gap-0 overflow-y-auto" aria-label="Mobile navigation">
+        <nav className="flex-1 flex flex-col px-6 pt-6 gap-2 overflow-y-auto" aria-label="Mobile navigation">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="py-4 text-[16px] font-medium text-[#1C1C1C] hover:text-[#E8234A] border-b border-[#EDE8DC]/60 transition-colors"
+              className="py-3.5 px-4 rounded-xl text-[16px] font-medium text-[#1C1C1C] hover:bg-white hover:text-[#E8234A] border border-transparent hover:border-[#E5DFD3] transition-all"
             >
               {link.label}
             </Link>
           ))}
-          <div className="mt-6 pb-6">
+
+          <div className="mt-8 pt-6 border-t border-[#E5DFD3] flex flex-col gap-3">
             <Link
               href="/demo"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-center gap-2 h-12 rounded-xl bg-[#E8234A] hover:bg-[#C4182E] text-white text-[15px] font-semibold transition-colors w-full shadow-md"
+              className="btn-primary w-full h-12 text-[15px]"
             >
-              Get Access
+              <span>Request Clinical Demo</span>
               <ArrowRight className="h-4 w-4" />
             </Link>
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="btn-secondary w-full h-12 text-[15px]"
+            >
+              Contact Sales & Medical Affairs
+            </Link>
+          </div>
+
+          <div className="mt-auto py-6 flex items-center justify-center gap-6 text-[12px] text-[#6B7280]">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-[#E8234A]" />
+              HIPAA & GDPR Ready
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Stethoscope className="w-4 h-4 text-[#E8234A]" />
+              CE & FDA Pathway
+            </span>
           </div>
         </nav>
       </div>

@@ -9,25 +9,25 @@ export const metadata: Metadata = {
 
 export default function TermsOfServicePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#EDE8DC]/40 text-[#1C1C1C] font-sans">
+    <div className="flex flex-col min-h-screen bg-[#F8F5EE] text-[#1C1C1C] font-sans">
       <Header />
 
       <main className="flex-grow container mx-auto px-6 md:px-8 py-16 lg:py-24 max-w-4xl mt-[72px]">
-        <div className="bg-white border border-[#D9D0BF]/60 rounded-3xl p-8 md:p-12 shadow-[0_10px_35px_rgba(0,0,0,0.03)] space-y-8">
+        <div className="bg-white border border-[#E5DFD3] rounded-3xl p-8 md:p-12 shadow-sm space-y-8">
           
-          <div className="border-b border-slate-100 pb-6">
-            <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-100 px-3.5 py-1 rounded-full text-[12px] font-bold tracking-wider text-[#E8234A] uppercase mb-3">
+          <div className="border-b border-[#E5DFD3]/60 pb-6">
+            <div className="inline-flex items-center gap-2 bg-[#E8234A]/10 border border-[#E8234A]/20 px-3.5 py-1 rounded-full text-[12px] font-bold tracking-wider text-[#E8234A] uppercase mb-3">
               Legal Agreement
             </div>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-[#1C1C1C]">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-[#1C1C1C] tracking-tight">
               Terms of Service
             </h1>
-            <p className="text-sm text-slate-500 mt-2">
+            <p className="text-sm text-[#6B7280] mt-2">
               Effective Date: September 2026 &bull; Coeur.AI / LogicBoots
             </p>
           </div>
 
-          <section className="space-y-6 text-sm text-slate-700 leading-relaxed">
+          <section className="space-y-6 text-sm text-[#4B5563] leading-relaxed">
             <div>
               <h2 className="text-lg font-bold text-[#1C1C1C] mb-2">1. Acceptance of Terms</h2>
               <p>

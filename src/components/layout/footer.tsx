@@ -1,79 +1,100 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Twitter, Youtube, Mail, Phone, Shield } from "lucide-react";
+import { Linkedin, Twitter, Youtube, Mail, Phone, Shield, CheckCircle2 } from "lucide-react";
 
-const aboutLinks = [
-  { href: "https://logicboots.com", label: "About Us", external: true },
-  { href: "/#features", label: "Features" },
+const navigationLinks = [
+  { href: "/#features", label: "Features & Bento" },
   { href: "/#how-it-works", label: "How It Works" },
-  { href: "/contact", label: "Support" },
+  { href: "/#clinical-evidence", label: "Clinical Evidence" },
+  { href: "/pricing", label: "Pricing & Matrix" },
+  { href: "/demo", label: "Schedule Demo" },
 ];
 
-const serviceLinks = [
-  { href: "/#solution", label: "Solutions" },
-  { href: "/pricing", label: "Pricing & Plans" },
-  { href: "/demo", label: "Request Demo" },
-  { href: "/#faq", label: "FAQ" },
+const clinicalLinks = [
+  { href: "/#features", label: "Aortic Stenosis Screening" },
+  { href: "/#features", label: "Mitral Regurgitation Triage" },
+  { href: "/#features", label: "Pediatric Murmur Detection" },
+  { href: "/#how-it-works", label: "EHR FHIR / HL7 Connectors" },
+  { href: "/demo", label: "Institutional Pilots" },
 ];
 
-const infoLinks = [
+const legalLinks = [
   { href: "/terms", label: "Terms of Service" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/medical-disclaimer", label: "Medical Disclaimer" },
+  { href: "/contact", label: "HIPAA Security Statement" },
 ];
 
 export default function Footer() {
-  return (
-    <footer className="relative mt-12 md:mt-16 bg-gradient-to-b from-[#0a1a4d] to-[#050c26] text-white">
-      {/* Background radial overlays */}
-      <div className="absolute inset-0 bg-black/5 mix-blend-overlay pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(232,35,74,0.15),transparent_40%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,82,255,0.08),transparent_50%)] pointer-events-none" />
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
 
-      <div className="container mx-auto px-6 md:px-8 max-w-7xl pb-12 pt-6 relative z-10">
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+    }
+  };
+
+  return (
+    <footer className="bg-[#F8F5EE] border-t border-[#E5DFD3] text-[#1C1C1C] pt-16 pb-12">
+      <div className="container mx-auto px-6 md:px-8 max-w-[1360px]">
         
         {/* Newsletter Capsule Card */}
-        <div className="relative -translate-y-20 rounded-3xl bg-[#131e42]/90 backdrop-blur-md border border-white/10 p-8 md:p-10 shadow-2xl">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 text-center lg:text-left">
+        <div className="bg-white rounded-3xl border border-[#E5DFD3] p-8 md:p-12 shadow-[0_12px_40px_rgba(0,0,0,0.03)] mb-16">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
             <div className="max-w-xl">
-              <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-2">
-                Join Clinical Updates
+              <span className="text-[12px] font-bold text-[#E8234A] uppercase tracking-widest mb-1.5 block">
+                Clinical Research Bulletins
+              </span>
+              <h3 className="text-2xl md:text-3xl font-bold text-[#1C1C1C] tracking-tight mb-2">
+                Stay Ahead in AI-Assisted Cardiology
               </h3>
-              <p className="text-[14px] text-slate-300 leading-relaxed">
-                Stay up-to-date with our latest AI diagnostic advancements, validation studies, and auscultation research.
+              <p className="text-[14.5px] text-[#6B7280] leading-relaxed">
+                Receive peer-reviewed auscultation studies, model benchmark updates, and multi-center clinical trial findings directly in your inbox.
               </p>
             </div>
-            <form 
-              action="#" 
-              onSubmit={(e) => { e.preventDefault(); alert("Thank you for subscribing!"); }}
-              className="flex w-full lg:w-auto items-center gap-2 bg-white/5 border border-white/10 p-1.5 rounded-full max-w-md mx-auto lg:mx-0"
-            >
-              <input 
-                type="email" 
-                required
-                placeholder="Enter your clinical email" 
-                className="bg-transparent text-white placeholder-slate-400 text-sm px-4 focus:outline-none w-full lg:w-64"
-                aria-label="Email for newsletter subscription"
-              />
-              <button 
-                type="submit"
-                className="bg-[#E8234A] hover:bg-[#C4182E] active:scale-95 text-white text-sm font-semibold px-6 py-2.5 rounded-full transition-all shrink-0 shadow-md"
+
+            {subscribed ? (
+              <div className="flex items-center gap-3 px-6 py-3.5 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-800 text-sm font-semibold">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                <span>Thank you. You have been subscribed to clinical updates.</span>
+              </div>
+            ) : (
+              <form 
+                onSubmit={handleSubscribe}
+                className="flex flex-col sm:flex-row w-full lg:w-auto items-center gap-2.5 max-w-md"
               >
-                Subscribe
-              </button>
-            </form>
+                <input 
+                  type="email" 
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your clinical email" 
+                  className="w-full sm:w-72 h-12 px-4 rounded-xl bg-[#F8F5EE] border border-[#E5DFD3] text-[#1C1C1C] placeholder-[#6B7280] text-sm focus:outline-none focus:ring-2 focus:ring-[#E8234A]/20 focus:border-[#E8234A]"
+                  aria-label="Clinical email for newsletter"
+                />
+                <button 
+                  type="submit"
+                  className="btn-primary w-full sm:w-auto h-12 px-6 text-sm whitespace-nowrap shrink-0"
+                >
+                  Subscribe
+                </button>
+              </form>
+            )}
           </div>
         </div>
 
-        {/* Main Grid content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6 mt-[-30px] mb-12">
+        {/* Main 5-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-16">
           
-          {/* Col 1: Logo & Description */}
+          {/* Col 1: Logo & Mission */}
           <div className="space-y-4 md:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Coeur.AI home">
-              <div className="h-10 w-10 rounded-xl bg-[#E8234A] flex items-center justify-center shrink-0 shadow-sm">
+            <Link href="/" className="inline-flex items-center gap-2.5 group" aria-label="Coeur.AI home">
+              <div className="h-10 w-10 rounded-xl bg-[#E8234A] flex items-center justify-center shrink-0 shadow-sm group-hover:bg-[#C4182E] transition-colors">
                 <Image
                   src="/co-log.png"
                   width={24}
@@ -83,30 +104,32 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-[18px] font-bold text-white tracking-tight">Coeur.AI</span>
-                <span className="text-[9px] font-medium text-white/60 uppercase tracking-[0.14em] mt-0.5">
+                <span className="text-[19px] font-bold text-[#1C1C1C] tracking-tight">Coeur.AI</span>
+                <span className="text-[9.5px] font-medium text-[#6B7280] uppercase tracking-wider mt-0.5">
                   by LogicBoots
                 </span>
               </div>
             </Link>
-            <p className="text-[13px] text-white/80 leading-relaxed max-w-xs">
-              AI-powered cardiac and respiratory diagnostics — putting point-of-care clinical intelligence into every practitioner&apos;s hands.
+            <p className="text-[13.5px] text-[#6B7280] leading-relaxed max-w-xs">
+              Next-generation clinical decision support platform transforming standard stethoscopes with real-time on-device acoustic neural intelligence.
             </p>
+            <div className="flex items-center gap-2 text-[12px] font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200 w-fit">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              100% On-Device Neural Engine
+            </div>
           </div>
 
-          {/* Col 2: About Us */}
+          {/* Col 2: Platform Navigation */}
           <div>
-            <h4 className="text-[14px] font-bold text-white mb-4 uppercase tracking-wider text-slate-200">
-              Navigation
+            <h4 className="text-[13px] font-bold uppercase tracking-wider text-[#1C1C1C] mb-4">
+              Platform
             </h4>
-            <ul className="space-y-2.5">
-              {aboutLinks.map((l) => (
+            <ul className="space-y-2.5 text-[14px]">
+              {navigationLinks.map((l) => (
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    target={l.external ? "_blank" : undefined}
-                    rel={l.external ? "noopener noreferrer" : undefined}
-                    className="text-[13px] text-white/70 hover:text-white transition-colors"
+                    className="text-[#6B7280] hover:text-[#E8234A] transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -115,17 +138,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Solutions */}
+          {/* Col 3: Clinical Modules */}
           <div>
-            <h4 className="text-[14px] font-bold text-white mb-4 uppercase tracking-wider text-slate-200">
-              Solutions
+            <h4 className="text-[13px] font-bold uppercase tracking-wider text-[#1C1C1C] mb-4">
+              Clinical Modules
             </h4>
-            <ul className="space-y-2.5">
-              {serviceLinks.map((l) => (
+            <ul className="space-y-2.5 text-[14px]">
+              {clinicalLinks.map((l) => (
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="text-[13px] text-white/70 hover:text-white transition-colors"
+                    className="text-[#6B7280] hover:text-[#E8234A] transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -134,17 +157,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Legal & Compliance */}
+          {/* Col 4: Trust & Compliance */}
           <div>
-            <h4 className="text-[14px] font-bold text-white mb-4 uppercase tracking-wider text-slate-200">
+            <h4 className="text-[13px] font-bold uppercase tracking-wider text-[#1C1C1C] mb-4">
               Trust &amp; Legal
             </h4>
-            <ul className="space-y-2.5">
-              {infoLinks.map((l) => (
+            <ul className="space-y-2.5 text-[14px]">
+              {legalLinks.map((l) => (
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="text-[13px] text-white/70 hover:text-white transition-colors"
+                    className="text-[#6B7280] hover:text-[#E8234A] transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -153,30 +176,32 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 5: Contact Us */}
+          {/* Col 5: Contact Channels */}
           <div className="space-y-4">
-            <h4 className="text-[14px] font-bold text-white mb-4 uppercase tracking-wider text-slate-200">
-              Contact
+            <h4 className="text-[13px] font-bold uppercase tracking-wider text-[#1C1C1C] mb-4">
+              Clinical Inquiries
             </h4>
-            <ul className="space-y-3 text-[13px] text-white/80">
+            <ul className="space-y-3 text-[13.5px] text-[#6B7280]">
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 shrink-0 text-[#E8234A]" />
                 <span>+91 80 4710 4710</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0 text-[#E8234A]" />
-                <a href="mailto:contact@logicboots.com" className="hover:text-white transition-colors">
+                <a href="mailto:contact@logicboots.com" className="hover:text-[#E8234A] transition-colors">
                   contact@logicboots.com
                 </a>
               </li>
             </ul>
-            <div className="flex items-center gap-3 pt-2">
+            
+            {/* Social icons */}
+            <div className="flex items-center gap-2.5 pt-2">
               <Link
                 href="https://www.linkedin.com/showcase/coeurai"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="h-8 w-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                className="h-9 w-9 rounded-xl bg-white border border-[#E5DFD3] hover:border-[#E8234A] hover:text-[#E8234A] flex items-center justify-center text-[#1C1C1C] transition-colors shadow-sm"
               >
                 <Linkedin className="h-4 w-4" />
               </Link>
@@ -185,7 +210,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
-                className="h-8 w-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                className="h-9 w-9 rounded-xl bg-white border border-[#E5DFD3] hover:border-[#E8234A] hover:text-[#E8234A] flex items-center justify-center text-[#1C1C1C] transition-colors shadow-sm"
               >
                 <Twitter className="h-4 w-4" />
               </Link>
@@ -194,7 +219,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
-                className="h-8 w-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                className="h-9 w-9 rounded-xl bg-white border border-[#E5DFD3] hover:border-[#E8234A] hover:text-[#E8234A] flex items-center justify-center text-[#1C1C1C] transition-colors shadow-sm"
               >
                 <Youtube className="h-4 w-4" />
               </Link>
@@ -204,26 +229,26 @@ export default function Footer() {
         </div>
 
         {/* Regulatory & CDS Disclaimer Note */}
-        <div className="border-t border-white/10 pt-6 pb-4 text-[12px] text-white/50 leading-relaxed max-w-4xl">
-          <p className="flex items-start gap-2">
+        <div className="border-t border-[#E5DFD3] pt-6 pb-6 text-[12px] text-[#6B7280] leading-relaxed">
+          <div className="flex items-start gap-2.5">
             <Shield className="h-4 w-4 text-[#E8234A] shrink-0 mt-0.5" />
-            <span>
-              <strong>Clinical Decision Support Disclaimer:</strong> Coeur.AI is an assistive screening platform designed to augment the diagnostic workflow of licensed healthcare professionals. It is not intended as a replacement for comprehensive diagnostic electrocardiography (12-lead ECG), echocardiography, or the direct judgment of a qualified physician.
-            </span>
-          </p>
+            <p>
+              <strong>Clinical Decision Support Disclaimer:</strong> Coeur.AI is an assistive diagnostic intelligence platform designed to augment the point-of-care workflow of certified healthcare professionals. It does not replace comprehensive echocardiography, 12-lead ECG, or the independent clinical judgment of a licensed physician.
+            </p>
+          </div>
         </div>
 
         {/* Bottom copyright bar */}
-        <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row items-center justify-between gap-4 text-[12px] text-white/60">
+        <div className="border-t border-[#E5DFD3] pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[12.5px] text-[#6B7280]">
           <p>
-            Copyright &copy; {new Date().getFullYear()} Coeur.AI | Powered by LogicBoots. All rights reserved.
+            &copy; {new Date().getFullYear()} Coeur.AI by LogicBoots. All rights reserved.
           </p>
-          <div className="flex gap-4">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="hover:text-[#E8234A] transition-colors">Privacy Policy</Link>
             <span>&bull;</span>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/terms" className="hover:text-[#E8234A] transition-colors">Terms of Service</Link>
             <span>&bull;</span>
-            <Link href="/medical-disclaimer" className="hover:text-white transition-colors">Medical Disclaimer</Link>
+            <Link href="/medical-disclaimer" className="hover:text-[#E8234A] transition-colors">Medical Disclaimer</Link>
           </div>
         </div>
 

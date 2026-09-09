@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Activity, Globe, ShieldCheck, Mail, MapPin, CheckCircle2 } from "lucide-react";
+import { Activity, ShieldCheck, Mail, MapPin, CheckCircle2, Stethoscope, ArrowRight, Clock } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -15,10 +14,19 @@ export default function DemoPage() {
     name: "",
     email: "",
     phone: "",
+    role: "Cardiologist / Physician",
+    organization: "",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [fieldError, setFieldError] = useState<string | null>(null);
+
+  const roles = [
+    "Cardiologist / Physician",
+    "Hospital Administrator",
+    "Primary Care Clinic",
+    "Clinical Researcher",
+  ];
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -57,17 +65,22 @@ export default function DemoPage() {
       const response = await fetch("/api/demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: `Role: ${formData.role} | Org: ${formData.organization} | Note: ${formData.message}`,
+        }),
       });
 
       const resData = await response.json();
 
       if (response.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", phone: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", role: "Cardiologist / Physician", organization: "", message: "" });
         toast({
-          title: "Demo Request Submitted",
-          description: "Our clinical integration team will contact you within 24 hours.",
+          title: "Demonstration Scheduled",
+          description: "Our Medical Affairs team will confirm your clinical demo time within 24 hours.",
         });
       } else {
         setStatus("error");
@@ -86,14 +99,11 @@ export default function DemoPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#EDE8DC]/40 text-[#1C1C1C] font-sans">
+    <div className="flex flex-col min-h-screen bg-[#F8F5EE] text-[#1C1C1C] font-sans">
       <Header />
 
-      <main className="flex-grow container mx-auto px-6 md:px-8 py-16 lg:py-24 max-w-7xl relative mt-[72px]">
-        {/* Subtle ambient blur */}
-        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-rose-200/20 rounded-full blur-[120px] pointer-events-none -z-10" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-amber-100/30 rounded-full blur-[100px] pointer-events-none -z-10" />
-
+      <main className="flex-grow container mx-auto px-6 md:px-8 pt-36 pb-24 max-w-[1360px] relative">
+        
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -103,80 +113,120 @@ export default function DemoPage() {
           {/* Header text */}
           <div className="lg:col-span-12 mb-2">
             <motion.div variants={itemVariants} className="space-y-4 max-w-3xl">
-              <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-100 px-3.5 py-1 rounded-full text-[12px] font-bold tracking-wider text-[#E8234A] uppercase">
-                Clinical Decision Support Demo
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E5DFD3] text-[13px] font-semibold text-[#E8234A] shadow-sm">
+                <Stethoscope className="w-3.5 h-3.5" />
+                Clinical Decision Support Demonstration
               </div>
-              <h1 className="text-[36px] md:text-[48px] font-bold tracking-tight text-[#1C1C1C] leading-[1.15]">
-                Experience the Future of{" "}
-                <span className="text-[#E8234A]">Point-of-Care Diagnostics</span>
+              <h1 className="text-[36px] sm:text-[46px] md:text-[52px] font-bold tracking-tight text-[#1C1C1C] leading-[1.1]">
+                Experience Real-Time AI <br />
+                <span className="text-[#E8234A]">Cardiac Auscultation.</span>
               </h1>
-              <p className="text-slate-600 text-[16px] md:text-[18px] max-w-2xl leading-relaxed">
-                Schedule a personalized walkthrough to see how Coeur.AI integrates with your clinical practice, digitizes auscultation workflows, and accelerates triage.
+              <p className="text-[#6B7280] text-[17px] leading-relaxed max-w-2xl">
+                Schedule a 15-minute 1-on-1 walkthrough with our medical engineering team to see live PCG spectrogram isolation, murmur classification, and EHR FHIR export in action.
               </p>
             </motion.div>
           </div>
 
           {/* Form container - 7 columns */}
           <motion.div variants={itemVariants} className="lg:col-span-7 w-full">
-            <div className="bg-white border border-[#D9D0BF]/60 rounded-3xl p-7 md:p-9 shadow-[0_10px_35px_rgba(0,0,0,0.04)]">
-              <h2 className="text-xl font-bold text-[#1C1C1C] mb-6">Request Your Walkthrough</h2>
+            <div className="bg-white border border-[#E5DFD3] rounded-3xl p-8 md:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.03)]">
+              <h2 className="text-[20px] font-bold text-[#1C1C1C] mb-6">Request Clinical Demonstration</h2>
               
               <form className="space-y-5" onSubmit={handleFormSubmit}>
+                
+                {/* Role Pill Selector */}
+                <div className="space-y-2">
+                  <label className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                    I am a:
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    {roles.map((r) => (
+                      <button
+                        type="button"
+                        key={r}
+                        onClick={() => setFormData({ ...formData, role: r })}
+                        className={`px-3 py-2 rounded-xl text-[12px] font-semibold transition-all border text-center ${
+                          formData.role === r
+                            ? "bg-[#E8234A] text-white border-[#E8234A] shadow-sm"
+                            : "bg-[#F8F5EE] text-[#6B7280] border-[#E5DFD3] hover:text-[#1C1C1C]"
+                        }`}
+                      >
+                        {r.split(" ")[0]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label htmlFor="demo-name" className="text-[12.5px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                    <label htmlFor="demo-name" className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
                       Full Name *
                     </label>
                     <Input
                       id="demo-name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Dr. Jane Smith"
+                      placeholder="Dr. Sarah Jenkins"
                       required
-                      className="bg-[#FDFAF5] border-slate-200 text-[#1C1C1C] placeholder:text-slate-400 focus-visible:ring-[#E8234A]/30 h-11 text-[14px] rounded-xl"
+                      className="bg-[#F8F5EE] border-[#E5DFD3] text-[#1C1C1C] placeholder:text-[#6B7280] focus-visible:ring-[#E8234A]/20 focus-visible:border-[#E8234A] h-12 text-[14px] rounded-xl"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="demo-email" className="text-[12.5px] font-bold text-[#1C1C1C] uppercase tracking-wider">
-                      Clinical / Work Email *
+                    <label htmlFor="demo-email" className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                      Clinical / Institutional Email *
                     </label>
                     <Input
                       id="demo-email"
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="name@hospital.org"
+                      placeholder="s.jenkins@cardiology.org"
                       required
-                      className="bg-[#FDFAF5] border-slate-200 text-[#1C1C1C] placeholder:text-slate-400 focus-visible:ring-[#E8234A]/30 h-11 text-[14px] rounded-xl"
+                      className="bg-[#F8F5EE] border-[#E5DFD3] text-[#1C1C1C] placeholder:text-[#6B7280] focus-visible:ring-[#E8234A]/20 focus-visible:border-[#E8234A] h-12 text-[14px] rounded-xl"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="space-y-2">
+                    <label htmlFor="demo-org" className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                      Hospital / Organization
+                    </label>
+                    <Input
+                      id="demo-org"
+                      value={formData.organization}
+                      onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                      placeholder="e.g. Mass General / Apollo Hospitals"
+                      className="bg-[#F8F5EE] border-[#E5DFD3] text-[#1C1C1C] placeholder:text-[#6B7280] focus-visible:ring-[#E8234A]/20 focus-visible:border-[#E8234A] h-12 text-[14px] rounded-xl"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="demo-phone" className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                      Phone Number (Optional)
+                    </label>
+                    <Input
+                      id="demo-phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="+1 (617) 555-0199"
+                      className="bg-[#F8F5EE] border-[#E5DFD3] text-[#1C1C1C] placeholder:text-[#6B7280] focus-visible:ring-[#E8234A]/20 focus-visible:border-[#E8234A] h-12 text-[14px] rounded-xl"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="demo-phone" className="text-[12.5px] font-bold text-[#1C1C1C] uppercase tracking-wider">
-                    Contact Number (Optional)
-                  </label>
-                  <Input
-                    id="demo-phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="e.g. +1 (617) 555-0199 or +91 98765 43210"
-                    className="bg-[#FDFAF5] border-slate-200 text-[#1C1C1C] placeholder:text-slate-400 focus-visible:ring-[#E8234A]/30 h-11 text-[14px] rounded-xl"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="demo-message" className="text-[12.5px] font-bold text-[#1C1C1C] uppercase tracking-wider">
-                    Clinical Context / Practice Type
+                  <label htmlFor="demo-message" className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                    Clinical Context / Questions
                   </label>
                   <Textarea
                     id="demo-message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Tell us about your hospital, clinic, rural health project, or research setup..."
-                    className="bg-[#FDFAF5] border-slate-200 text-[#1C1C1C] placeholder:text-slate-400 focus-visible:ring-[#E8234A]/30 min-h-[120px] text-[14px] rounded-xl resize-none p-3.5"
+                    placeholder="Tell us about your diagnostic volume, existing digital stethoscopes, or specific valvular screening interests..."
+                    className="bg-[#F8F5EE] border-[#E5DFD3] text-[#1C1C1C] placeholder:text-[#6B7280] focus-visible:ring-[#E8234A]/20 focus-visible:border-[#E8234A] min-h-[120px] text-[14px] rounded-xl resize-none p-3.5"
                   />
                 </div>
 
@@ -184,88 +234,88 @@ export default function DemoPage() {
                   <p className="text-[#E8234A] text-[13px] font-semibold">{fieldError}</p>
                 )}
 
-                <Button
+                <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="bg-[#E8234A] hover:bg-[#C4182E] text-white px-8 py-6 rounded-xl font-bold transition-all duration-200 w-full sm:w-auto shadow-md hover:shadow-[0_6px_20px_rgba(232,35,74,0.3)] hover:-translate-y-0.5"
+                  className="btn-primary w-full h-12 text-[15px]"
                 >
-                  {status === "loading" ? "Submitting..." : status === "success" ? "Submitted Successfully!" : "Submit Demo Request →"}
-                </Button>
+                  <span>{status === "loading" ? "Submitting Request..." : "Schedule Clinical Walkthrough"}</span>
+                  <ArrowRight className="h-4 w-4" />
+                </button>
 
                 {status === "success" && (
-                  <div className="flex items-center gap-2 text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-[13.5px] font-medium mt-3">
-                    <CheckCircle2 className="h-4 w-4 shrink-0" />
-                    <span>Thank you! Your request has been received. Our clinical specialists will be in touch.</span>
+                  <div className="flex items-center gap-2 text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-[13.5px] font-medium">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
+                    <span>Your request has been received. Our Medical Affairs team will email you within 24 hours.</span>
                   </div>
                 )}
               </form>
             </div>
           </motion.div>
 
-          {/* Value Props & Contact Info - 5 columns */}
-          <div className="lg:col-span-5 flex flex-col gap-10 w-full mt-2 lg:mt-0">
+          {/* Trust Highlights - 5 columns */}
+          <div className="lg:col-span-5 flex flex-col gap-6 w-full mt-2 lg:mt-0">
             
-            {/* Value Props List */}
-            <div className="space-y-6">
-              <motion.div variants={itemVariants} className="flex gap-4 p-4 rounded-2xl bg-white/70 border border-[#D9D0BF]/40">
-                <div className="h-11 w-11 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#E8234A] shrink-0">
+            <div className="bg-white rounded-3xl border border-[#E5DFD3] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.03)] space-y-6">
+              <h3 className="text-[18px] font-bold text-[#1C1C1C] border-b border-[#E5DFD3] pb-4">
+                What to Expect in Your Demo
+              </h3>
+
+              <div className="flex gap-4">
+                <div className="h-10 w-10 rounded-xl bg-[#E8234A]/10 border border-[#E8234A]/20 flex items-center justify-center text-[#E8234A] shrink-0">
+                  <Clock className="h-5 w-5" />
+                </div>
+                <div>
+                  <h4 className="text-[15px] font-bold text-[#1C1C1C] mb-1">15-Minute Tailored Session</h4>
+                  <p className="text-[#6B7280] text-[13.5px] leading-relaxed">
+                    Interactive walkthrough tailored specifically to outpatient OPD, cardiology ward, or field screening setups.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 shrink-0">
                   <Activity className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-[16px] font-bold text-[#1C1C1C] mb-1">AI Auscultation Screening</h3>
-                  <p className="text-slate-600 leading-relaxed text-[13.5px]">
-                    Analyze sound phonocardiograms and surface murmur or COPD wheezing patterns to augment clinical triage.
+                  <h4 className="text-[15px] font-bold text-[#1C1C1C] mb-1">Live Waveform Telemetry</h4>
+                  <p className="text-[#6B7280] text-[13.5px] leading-relaxed">
+                    Test PCG sound recordings with real-time acoustic segmentation and murmur probability classification.
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div variants={itemVariants} className="flex gap-4 p-4 rounded-2xl bg-white/70 border border-[#D9D0BF]/40">
-                <div className="h-11 w-11 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#E8234A] shrink-0">
-                  <Globe className="h-5 w-5" />
+              <div className="flex gap-4">
+                <div className="h-10 w-10 rounded-xl bg-[#F8F5EE] border border-[#E5DFD3] flex items-center justify-center text-[#1C1C1C] shrink-0">
+                  <ShieldCheck className="h-5 w-5 text-[#E8234A]" />
                 </div>
                 <div>
-                  <h3 className="text-[16px] font-bold text-[#1C1C1C] mb-1">Fully Offline Ready</h3>
-                  <p className="text-slate-600 leading-relaxed text-[13.5px]">
-                    Perform screening anywhere with on-device processing — optimized for rural clinics and field health drives.
+                  <h4 className="text-[15px] font-bold text-[#1C1C1C] mb-1">EHR & Hardware Consultation</h4>
+                  <p className="text-[#6B7280] text-[13.5px] leading-relaxed">
+                    Review digital stethoscope compatibility and HL7/FHIR connector protocols for your hospital system.
                   </p>
                 </div>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="flex gap-4 p-4 rounded-2xl bg-white/70 border border-[#D9D0BF]/40">
-                <div className="h-11 w-11 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#E8234A] shrink-0">
-                  <ShieldCheck className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-[16px] font-bold text-[#1C1C1C] mb-1">Actionable Clinical PDF Reports</h3>
-                  <p className="text-slate-600 leading-relaxed text-[13.5px]">
-                    Export structured diagnostic summaries with confidence indicators and PCG waveform extracts.
-                  </p>
-                </div>
-              </motion.div>
+              </div>
             </div>
 
-            {/* Separator */}
-            <motion.div variants={itemVariants} className="h-px w-full bg-[#D9D0BF]/50" />
-
             {/* Direct Contact */}
-            <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-1.5">
-                <p className="text-[11px] font-bold tracking-wider text-slate-400 uppercase flex items-center gap-1.5">
-                  <Mail className="h-3.5 w-3.5 text-[#E8234A]" /> Email Support
-                </p>
-                <a href="mailto:contact@logicboots.com" className="text-[#E8234A] hover:text-[#C4182E] transition-colors font-bold text-[14px]">
-                  contact@logicboots.com
-                </a>
+            <div className="bg-white rounded-3xl border border-[#E5DFD3] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.03)] space-y-4">
+              <h4 className="text-[14px] font-bold uppercase tracking-wider text-[#6B7280]">
+                Direct Inquiries
+              </h4>
+              <div className="space-y-3 text-[14px]">
+                <div className="flex items-center gap-2 text-[#6B7280]">
+                  <Mail className="h-4 w-4 text-[#E8234A]" />
+                  <a href="mailto:contact@logicboots.com" className="text-[#1C1C1C] font-semibold hover:text-[#E8234A] transition-colors">
+                    contact@logicboots.com
+                  </a>
+                </div>
+                <div className="flex items-start gap-2 text-[#6B7280]">
+                  <MapPin className="h-4 w-4 text-[#E8234A] shrink-0 mt-0.5" />
+                  <span>Mass Robotics, 12 Channel St #202, Boston, MA 02210</span>
+                </div>
               </div>
-              <div className="space-y-1.5">
-                <p className="text-[11px] font-bold tracking-wider text-slate-400 uppercase flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-[#E8234A]" /> Boston Hub
-                </p>
-                <p className="text-[#1C1C1C] font-semibold text-[13.5px] leading-snug">
-                  Mass Robotics, 12 Channel St #202, Boston, MA 02210
-                </p>
-              </div>
-            </motion.div>
+            </div>
 
           </div>
         </motion.div>

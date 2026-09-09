@@ -18,27 +18,26 @@ export default function MediaRecognitionSection() {
   const tickerItems = [...logos, ...logos];
 
   return (
-    <section className="relative w-full bg-gradient-to-r from-[#0a1a4d] to-[#051032] py-4 overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_30px_rgba(0,0,0,0.2)]">
-      <p className="text-[10px] font-bold text-white/80 tracking-[0.25em] uppercase text-center mb-2.5 relative z-20">
-        Institutional Recognition &amp; Clinical Support
-      </p>
+    <section className="relative w-full bg-[#F8F5EE] py-8 border-y border-[#E5DFD3]/80 overflow-hidden">
+      <div className="container mx-auto px-6 max-w-[1360px] text-center mb-5">
+        <p className="text-[11px] font-bold text-[#6B7280] tracking-[0.2em] uppercase">
+          Institutional Recognition &amp; Clinical Innovation Backing
+        </p>
+      </div>
       
-      <div className="relative w-full overflow-hidden z-20">
-        <div className="absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#0a1a4d] to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-[#051032] to-transparent z-10 pointer-events-none" />
-        
-        <div className="flex w-max items-center gap-16 md:gap-20 py-1 animate-infinite-scroll">
+      <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+        <div className="flex w-max items-center gap-14 md:gap-20 py-2 animate-infinite-scroll">
           {tickerItems.map((logo, index) => (
             <div 
               key={`${logo.alt}-${index}`} 
-              className="flex items-center justify-center w-32 h-8 flex-shrink-0 transition-transform duration-300 hover:scale-110"
+              className="flex items-center justify-center w-36 h-10 flex-shrink-0 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 width={120}
-                height={32}
-                className="max-h-6 w-auto object-contain brightness-0 invert opacity-85 hover:opacity-100 transition-opacity duration-300"
+                height={36}
+                className="max-h-7 w-auto object-contain"
               />
             </div>
           ))}

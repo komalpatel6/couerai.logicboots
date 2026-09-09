@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, Phone, Send, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Phone, Send, CheckCircle2, MessageSquare } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -72,7 +71,7 @@ export default function ContactPage() {
         setFormData({ name: "", email: "", subject: "", message: "" });
         toast({
           title: "Message Delivered",
-          description: "We have received your inquiry and will respond promptly.",
+          description: "We have received your inquiry and our clinical team will respond promptly.",
         });
       } else {
         setStatus("error");
@@ -91,63 +90,63 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#EDE8DC]/40 text-[#1C1C1C] font-sans">
+    <div className="flex flex-col min-h-screen bg-[#F8F5EE] text-[#1C1C1C] font-sans">
       <Header />
 
-      <main className="flex-grow container mx-auto px-6 md:px-8 py-16 lg:py-24 max-w-7xl relative mt-[72px]">
-        {/* Ambient subtle glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose-100/30 rounded-full blur-[120px] pointer-events-none -z-10" />
-
+      <main className="flex-grow container mx-auto px-6 md:px-8 pt-36 pb-24 max-w-[1360px] relative">
+        
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
         >
-          {/* Left Column: Info */}
+          {/* Left Column: Info (5 Cols) */}
           <motion.div variants={itemVariants} className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-100 px-3.5 py-1 rounded-full text-[12px] font-bold tracking-wider text-[#E8234A] uppercase">
-                Direct Communication
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E5DFD3] text-[13px] font-semibold text-[#E8234A] shadow-sm">
+                <MessageSquare className="w-3.5 h-3.5" />
+                Direct Communication &amp; Support
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#1C1C1C] leading-tight">
-                Get in <span className="text-[#E8234A]">Touch</span>
+              <h1 className="text-[36px] sm:text-[46px] md:text-[50px] font-bold tracking-tight text-[#1C1C1C] leading-[1.1]">
+                Connect with our <br />
+                <span className="text-[#E8234A]">Medical Affairs Team.</span>
               </h1>
-              <p className="text-slate-600 text-lg leading-relaxed">
-                Have questions about clinical pilot programs, hardware integration, or partnership opportunities? Our clinical and engineering team is here to assist.
+              <p className="text-[#6B7280] text-[17px] leading-relaxed">
+                Have questions regarding multi-center clinical validation trials, hardware transducer pairing, or hospital procurement? We are here to help.
               </p>
             </div>
 
-            <div className="space-y-5 pt-2">
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-[#D9D0BF]/50 shadow-sm">
-                <div className="h-11 w-11 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#E8234A] shrink-0">
+            <div className="space-y-4 pt-2">
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-sm">
+                <div className="h-11 w-11 rounded-xl bg-[#E8234A]/10 border border-[#E8234A]/20 flex items-center justify-center text-[#E8234A] shrink-0">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-[#1C1C1C] font-bold text-[15px] mb-0.5">Email Support</h3>
-                  <a href="mailto:contact@logicboots.com" className="text-slate-600 hover:text-[#E8234A] transition-colors text-[14px]">
+                  <h3 className="text-[#1C1C1C] font-bold text-[15px] mb-0.5">Clinical Email Support</h3>
+                  <a href="mailto:contact@logicboots.com" className="text-[#6B7280] hover:text-[#E8234A] transition-colors text-[14px]">
                     contact@logicboots.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-[#D9D0BF]/50 shadow-sm">
-                <div className="h-11 w-11 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#E8234A] shrink-0">
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-sm">
+                <div className="h-11 w-11 rounded-xl bg-[#F8F5EE] border border-[#E5DFD3] flex items-center justify-center text-[#1C1C1C] shrink-0">
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="text-[#1C1C1C] font-bold text-[15px] mb-0.5">Phone</h3>
-                  <p className="text-slate-600 text-[14px]">+91 80 4710 4710</p>
+                  <h3 className="text-[#1C1C1C] font-bold text-[15px] mb-0.5">Phone Inquiries</h3>
+                  <p className="text-[#6B7280] text-[14px]">+91 80 4710 4710</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-[#D9D0BF]/50 shadow-sm">
-                <div className="h-11 w-11 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#E8234A] shrink-0">
-                  <MapPin className="h-5 w-5" />
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-sm">
+                <div className="h-11 w-11 rounded-xl bg-[#F8F5EE] border border-[#E5DFD3] flex items-center justify-center text-[#1C1C1C] shrink-0">
+                  <MapPin className="h-5 w-5 text-[#E8234A]" />
                 </div>
                 <div>
-                  <h3 className="text-[#1C1C1C] font-bold text-[15px] mb-0.5">Global Locations</h3>
-                  <p className="text-slate-600 text-[13.5px] leading-snug">
+                  <h3 className="text-[#1C1C1C] font-bold text-[15px] mb-0.5">Global Research Centers</h3>
+                  <p className="text-[#6B7280] text-[13.5px] leading-relaxed">
                     Mass Robotics, 12 Channel St #202, Boston, MA 02210<br />
                     TIDES Business Incubator, IIT Roorkee, India
                   </p>
@@ -156,28 +155,28 @@ export default function ContactPage() {
             </div>
           </motion.div>
 
-          {/* Right Column: Contact Form */}
+          {/* Right Column: Contact Form (7 Cols) */}
           <motion.div variants={itemVariants} className="lg:col-span-7">
-            <div className="bg-white border border-[#D9D0BF]/60 rounded-3xl p-7 md:p-9 shadow-[0_10px_35px_rgba(0,0,0,0.04)]">
-              <h2 className="text-xl font-bold text-[#1C1C1C] mb-6">Send Us a Message</h2>
+            <div className="bg-white border border-[#E5DFD3] rounded-3xl p-8 md:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.03)]">
+              <h2 className="text-[20px] font-bold text-[#1C1C1C] mb-6">Send Us a Direct Message</h2>
 
               <form className="space-y-5" onSubmit={handleFormSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label htmlFor="contact-name" className="text-[12.5px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                    <label htmlFor="contact-name" className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
                       Full Name *
                     </label>
                     <Input
                       id="contact-name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Dr. John Doe"
+                      placeholder="Dr. Michael Chang"
                       required
-                      className="bg-[#FDFAF5] border-slate-200 text-[#1C1C1C] placeholder:text-slate-400 focus-visible:ring-[#E8234A]/30 h-11 text-[14px] rounded-xl"
+                      className="bg-[#F8F5EE] border-[#E5DFD3] text-[#1C1C1C] placeholder:text-[#6B7280] focus-visible:ring-[#E8234A]/20 focus-visible:border-[#E8234A] h-12 text-[14px] rounded-xl"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="contact-email" className="text-[12.5px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                    <label htmlFor="contact-email" className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
                       Email Address *
                     </label>
                     <Input
@@ -185,37 +184,37 @@ export default function ContactPage() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="john@hospital.org"
+                      placeholder="m.chang@cardiohealth.com"
                       required
-                      className="bg-[#FDFAF5] border-slate-200 text-[#1C1C1C] placeholder:text-slate-400 focus-visible:ring-[#E8234A]/30 h-11 text-[14px] rounded-xl"
+                      className="bg-[#F8F5EE] border-[#E5DFD3] text-[#1C1C1C] placeholder:text-[#6B7280] focus-visible:ring-[#E8234A]/20 focus-visible:border-[#E8234A] h-12 text-[14px] rounded-xl"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="contact-subject" className="text-[12.5px] font-bold text-[#1C1C1C] uppercase tracking-wider">
-                    Subject
+                  <label htmlFor="contact-subject" className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                    Inquiry Subject
                   </label>
                   <Input
                     id="contact-subject"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="Clinical Trial Inquiry / Integration"
-                    className="bg-[#FDFAF5] border-slate-200 text-[#1C1C1C] placeholder:text-slate-400 focus-visible:ring-[#E8234A]/30 h-11 text-[14px] rounded-xl"
+                    placeholder="e.g. Clinical Trial Collaboration / Hardware Compatibility"
+                    className="bg-[#F8F5EE] border-[#E5DFD3] text-[#1C1C1C] placeholder:text-[#6B7280] focus-visible:ring-[#E8234A]/20 focus-visible:border-[#E8234A] h-12 text-[14px] rounded-xl"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="contact-message" className="text-[12.5px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                  <label htmlFor="contact-message" className="text-[12px] font-bold text-[#1C1C1C] uppercase tracking-wider">
                     Message *
                   </label>
                   <Textarea
                     id="contact-message"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="How can our clinical team help you?"
+                    placeholder="Please provide details regarding your clinical inquiry, hospital volume, or partnership..."
                     required
-                    className="bg-[#FDFAF5] border-slate-200 text-[#1C1C1C] placeholder:text-slate-400 focus-visible:ring-[#E8234A]/30 min-h-[140px] resize-none text-[14px] rounded-xl p-3.5"
+                    className="bg-[#F8F5EE] border-[#E5DFD3] text-[#1C1C1C] placeholder:text-[#6B7280] focus-visible:ring-[#E8234A]/20 focus-visible:border-[#E8234A] min-h-[140px] resize-none text-[14px] rounded-xl p-3.5"
                   />
                 </div>
 
@@ -223,22 +222,22 @@ export default function ContactPage() {
                   <p className="text-[#E8234A] text-[13px] font-semibold">{errorMessage}</p>
                 )}
 
-                <Button
+                <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="bg-[#E8234A] hover:bg-[#C4182E] text-white px-8 py-6 rounded-xl font-bold transition-all duration-200 w-full md:w-auto shadow-md hover:shadow-[0_6px_20px_rgba(232,35,74,0.3)] hover:-translate-y-0.5"
+                  className="btn-primary w-full md:w-auto h-12 px-8 text-[14px]"
                 >
-                  {status === "loading" ? "Sending..." : status === "success" ? "Message Sent!" : (
+                  {status === "loading" ? "Transmitting Message..." : status === "success" ? "Message Delivered!" : (
                     <span className="flex items-center gap-2">
-                      Send Message <Send className="h-4 w-4" />
+                      Send Clinical Message <Send className="h-4 w-4" />
                     </span>
                   )}
-                </Button>
+                </button>
 
                 {status === "success" && (
-                  <div className="flex items-center gap-2 text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-[13.5px] font-medium mt-3">
-                    <CheckCircle2 className="h-4 w-4 shrink-0" />
-                    <span>Your message has been sent successfully. We will reply shortly.</span>
+                  <div className="flex items-center gap-2 text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-[13.5px] font-medium">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
+                    <span>Your message has been sent successfully. Our clinical team will reply within 24 hours.</span>
                   </div>
                 )}
               </form>

@@ -1,87 +1,92 @@
 import { FadeIn } from "@/components/fade-in";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShieldCheck, Stethoscope } from "lucide-react";
 
 export default function CtaSection() {
   return (
-    <section className="pt-20 md:pt-28 pb-0 md:pb-0 bg-[#FDFAF5] section-divider">
-      <div className="container mx-auto px-6 md:px-8 max-w-7xl text-center">
+    <section className="py-24 md:py-32 bg-[#F8F5EE] border-t border-[#E5DFD3]/80">
+      <div className="container mx-auto px-6 md:px-8 max-w-[1360px] text-center">
         
-        {/* Header copy */}
-        <FadeIn>
-          <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-100 px-3.5 py-1 rounded-full text-[12px] font-bold tracking-wider text-[#E8234A] uppercase mb-4">
-            Next-Generation Stethoscope AI
-          </div>
-          <h2 className="text-[36px] md:text-[50px] font-bold leading-tight tracking-tight text-[#1C1C1C] mb-4">
-            Let’s Make Cardiac &amp; Pulmonary Screening Smarter
-          </h2>
-          <p className="text-[16px] md:text-[18px] text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10">
-            Discover how Coeur.AI brings clinical acoustic neural models to your fingertips to support faster, more informed point-of-care screening.
-          </p>
-        </FadeIn>
+        {/* Main CTA Card */}
+        <div className="bg-white rounded-3xl border border-[#E5DFD3] p-8 md:p-16 shadow-[0_20px_60px_rgba(0,0,0,0.04)] relative overflow-hidden">
+          
+          {/* Subtle background glow */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#E8234A]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F8F5EE] rounded-full blur-3xl pointer-events-none" />
 
-        {/* Buttons / Actions */}
-        <FadeIn delay={80}>
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-16">
-            
-            {/* Demo CTA */}
-            <Link 
-              href="/demo" 
-              className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-xl bg-[#E8234A] hover:bg-[#C4182E] text-white text-[15px] font-semibold transition-all duration-200 shadow-md hover:shadow-[0_6px_20px_rgba(232,35,74,0.35)] hover:-translate-y-0.5"
-            >
-              Request a Clinical Demo
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-
-            {/* Google Play badge */}
-            <Link
-              href="https://play.google.com/store/apps/details?id=com.logicboots.coeurai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-[#D9D0BF] bg-white hover:border-[#E8234A]/40 hover:shadow-md transition-all duration-200"
-              aria-label="Download Coeur.AI on Google Play"
-            >
-              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#1C1C1C] shrink-0" aria-hidden="true">
-                <path d="M3.18 23.76a2 2 0 0 0 2.24-.22l12.49-7.2-2.82-2.82L3.18 23.76ZM.5 1.34A2 2 0 0 0 0 2.68v18.64a2 2 0 0 0 .5 1.34l.07.07 10.46-10.46v-.24L.57 1.27.5 1.34ZM20.32 10.54l-2.94-1.7-3.18 3.18 3.18 3.18 2.96-1.71a2.12 2.12 0 0 0 0-2.95ZM5.42.46 17.91 7.66 15.09 10.48 4.63.02a2 2 0 0 1 .79.44Z" />
-              </svg>
-              <div className="text-left">
-                <p className="text-[9px] text-slate-400 font-bold leading-none mb-0.5 uppercase tracking-wider">GET IT ON</p>
-                <p className="text-[14px] font-semibold text-[#1C1C1C] leading-none">Google Play</p>
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <FadeIn>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F8F5EE] border border-[#E5DFD3] text-[13px] font-semibold text-[#E8234A] mb-5 shadow-sm">
+                <Stethoscope className="w-3.5 h-3.5" />
+                Empower Your Clinical Practice
               </div>
-            </Link>
 
-            {/* Apple App Store badge */}
-            <span
-              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-[#D9D0BF]/60 bg-slate-50/70 cursor-not-allowed opacity-60 select-none"
-              title="iOS App Store release coming soon"
-              aria-label="Download on the App Store (coming soon)"
-            >
-              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-slate-400 shrink-0" aria-hidden="true">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-              </svg>
-              <div className="text-left">
-                <p className="text-[9px] text-slate-400 font-bold leading-none mb-0.5 uppercase tracking-wider">DOWNLOAD ON THE</p>
-                <p className="text-[14px] font-semibold text-slate-400 leading-none">App Store <span className="text-[9px] font-normal text-slate-400/70 lowercase">soon</span></p>
+              <h2 className="text-[34px] sm:text-[46px] md:text-[52px] font-bold leading-[1.08] tracking-[-0.03em] text-[#1C1C1C] mb-6">
+                Bring Instant Neural Auscultation <br className="hidden sm:inline" />
+                <span className="text-[#E8234A]">to Your Point of Care.</span>
+              </h2>
+
+              <p className="text-[17px] md:text-[19px] text-[#6B7280] leading-relaxed mb-10">
+                Join forward-thinking cardiology departments, primary care networks, and global research institutions using Coeur.AI to identify silent valvular lesions earlier.
+              </p>
+            </FadeIn>
+
+            {/* Buttons / Actions */}
+            <FadeIn delay={80}>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                {/* Primary Demo CTA */}
+                <Link 
+                  href="/demo" 
+                  className="btn-primary-lg w-full sm:w-auto text-[15px] shadow-lg shadow-[#E8234A]/20"
+                >
+                  <span>Schedule Clinical Demonstration</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+
+                {/* Google Play badge */}
+                <Link
+                  href="https://play.google.com/store/apps/details?id=com.logicboots.coeurai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary-lg w-full sm:w-auto text-[14px]"
+                  aria-label="Download Coeur.AI on Google Play"
+                >
+                  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#1C1C1C] shrink-0" aria-hidden="true">
+                    <path d="M3.18 23.76a2 2 0 0 0 2.24-.22l12.49-7.2-2.82-2.82L3.18 23.76ZM.5 1.34A2 2 0 0 0 0 2.68v18.64a2 2 0 0 0 .5 1.34l.07.07 10.46-10.46v-.24L.57 1.27.5 1.34ZM20.32 10.54l-2.94-1.7-3.18 3.18 3.18 3.18 2.96-1.71a2.12 2.12 0 0 0 0-2.95ZM5.42.46 17.91 7.66 15.09 10.48 4.63.02a2 2 0 0 1 .79.44Z" />
+                  </svg>
+                  <span>Get on Google Play</span>
+                </Link>
               </div>
-            </span>
 
+              <div className="flex items-center justify-center gap-6 text-[13px] text-[#6B7280]">
+                <span className="flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-[#E8234A]" />
+                  No credit card required for pilot access
+                </span>
+                <span className="hidden sm:inline-block text-neutral-300">•</span>
+                <span className="hidden sm:inline-block">
+                  Dedicated onboarding & EHR configuration
+                </span>
+              </div>
+            </FadeIn>
           </div>
-        </FadeIn>
 
-        {/* Showcase Image Banner */}
-        <FadeIn delay={150}>
-          <div className="relative rounded-3xl overflow-hidden bg-slate-900 shadow-2xl transition-all duration-300 hover:shadow-3xl hover:scale-[1.005]">
-            <Image
-              src="/coeur-app-showcase.png"
-              alt="Coeur.AI Application Dashboard and Features Showcase"
-              width={1400}
-              height={700}
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </FadeIn>
+          {/* Showcase Image Banner */}
+          <FadeIn delay={150}>
+            <div className="mt-12 rounded-2xl overflow-hidden bg-[#F8F5EE] border border-[#E5DFD3] shadow-md">
+              <Image
+                src="/coeur-app-showcase.png"
+                alt="Coeur.AI Application Dashboard and Features Showcase"
+                width={1400}
+                height={700}
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </FadeIn>
+
+        </div>
 
       </div>
     </section>

@@ -2,48 +2,43 @@
 
 import { useState } from "react";
 import { FadeIn } from "@/components/fade-in";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is Coeur.AI?",
+    question: "What clinical capabilities does Coeur.AI provide?",
     answer:
-      "Coeur.AI is an AI-powered cardiac and respiratory diagnostic platform that transforms your smartphone into a clinical-grade auscultation tool when paired with a compatible digital stethoscope. It analyzes phonocardiogram (PCG) sounds to surface preliminary insights for conditions like Hypertension, Arrhythmia, Asthma, COPD, and Pneumonia — with real-time ECG visualization and instant PDF reports.",
+      "Coeur.AI is an AI-powered clinical decision support platform that connects with standard digital stethoscopes to perform real-time phonocardiogram (PCG) acoustic triage. It segments cardiac sound cycles (S1, S2, systole, diastole) and highlights probability signatures for conditions including Aortic Stenosis, Mitral Regurgitation, S3/S4 Heart Failure gallops, and pulmonary adventitious sounds (wheezes and crackles).",
   },
   {
-    question: "Is it safe to use Coeur.AI for patient data?",
+    question: "How does Coeur.AI maintain patient privacy and HIPAA compliance?",
     answer:
-      "Yes. All health data is processed locally on-device using encrypted HL7 standards. No raw audio or personally identifiable patient data is transmitted to external servers. Coeur.AI is designed in alignment with HIPAA privacy principles and applicable data protection regulations. Your data stays on your device.",
+      "All neural network acoustic inferencing is executed 100% locally on the clinician's mobile device via optimized on-device machine learning engines (CoreML / ONNX). No raw patient audio or identifiable health information is streamed to the cloud during auscultation. All locally saved sessions are secured with AES-256 encryption.",
   },
   {
-    question: "Which digital stethoscopes does Coeur.AI support?",
+    question: "Which digital stethoscopes are compatible with Coeur.AI?",
     answer:
-      "Coeur.AI supports a range of compatible digital stethoscopes that connect via WiFi or Bluetooth. Contact our team via the Request Demo form for an up-to-date compatibility list and to confirm your specific device.",
+      "Coeur.AI is designed to be hardware-agnostic and supports major standard digital stethoscopes with Bluetooth audio or 3.5mm input capabilities (including Eko Core/Duo, 3M Littmann digital lines, and custom USB-C/Lightning biomedical audio transducers).",
   },
   {
-    question: "What conditions can Coeur.AI detect?",
+    question: "Does Coeur.AI function without internet connectivity?",
     answer:
-      "Coeur.AI's AI engine recognizes patterns across two modules:\n\nHeart Module: Hypertension, Arrhythmia, Heart Murmurs, Valve Disorders, Tachycardia, Bradycardia.\nLung Module: Asthma, COPD, Pneumonia, Bronchitis, Pleural Effusion patterns.\n\nFull detection coverage varies by model version and region.",
+      "Yes. The core diagnostic inference engine is completely self-contained on the device. Clinicians in remote clinics, ambulances, or rural outreach camps can record, analyze, and generate provisional reports with zero active network connectivity.",
   },
   {
-    question: "Does Coeur.AI work without an internet connection?",
+    question: "Can Coeur.AI integrate with Hospital Electronic Health Records (EHR)?",
     answer:
-      "Yes. Coeur.AI's core AI analysis runs entirely on-device, making it fully functional in low- or no-connectivity environments — critical for rural clinics and field deployments. When a connection is available, the app syncs data and updates models automatically.",
+      "Yes. Coeur.AI generates standard HL7 / FHIR compliant diagnostic payloads as well as encrypted PDF clinical summaries that can be attached directly into Epic, Cerner, AthenaHealth, or exported for specialist cardiology referrals.",
   },
   {
-    question: "What does the PDF report include?",
+    question: "What regulatory clearance pathway is Coeur.AI pursuing?",
     answer:
-      "Each report includes: AI diagnostic findings, per-condition confidence scores, heart rate statistics, risk assessment flags, and a session timestamp log. Reports are formatted for easy sharing with referring physicians or inclusion in patient records.",
+      "Coeur.AI operates as a Class II Clinical Decision Support (CDS) software under FDA and CE MDR guidelines. It is designed to augment and accelerate trained clinical judgment rather than serve as a standalone diagnostic authority.",
   },
   {
-    question: "Is Coeur.AI a replacement for a cardiologist?",
+    question: "How do hospital networks and private clinics get started?",
     answer:
-      "No. Coeur.AI is a clinical decision support tool — it augments the clinician's judgment, not replaces it. All outputs are preliminary diagnostic insights intended to assist qualified healthcare professionals. Always consult a licensed medical professional before making any clinical decision.",
-  },
-  {
-    question: "How do I get started?",
-    answer:
-      "Download Coeur.AI from the Google Play Store (Android) or Apple App Store (iOS). Connect a compatible digital stethoscope, select your diagnostic mode, and start recording. You can also request a personalized demo for your clinic or health system.",
+      "You can request an institutional pilot or clinical demonstration through our website. Our medical affairs team assists with device compatibility validation, EHR connector setup, and clinical staff onboarding.",
   },
 ];
 
@@ -57,25 +52,27 @@ function FAQItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-[#D9D0BF]">
+    <div className="bg-white rounded-2xl border border-[#E5DFD3] overflow-hidden shadow-sm transition-all duration-200">
       <button
         onClick={onToggle}
-        className="w-full flex items-start justify-between gap-4 py-5 text-left group"
+        className="w-full flex items-center justify-between gap-4 p-6 text-left group cursor-pointer"
         aria-expanded={isOpen}
       >
-        <span className="text-[15px] md:text-[16px] font-semibold text-[#1C1C1C] leading-snug group-hover:text-[#E8234A] transition-colors">
+        <span className="text-[16px] md:text-[17px] font-bold text-[#1C1C1C] leading-snug group-hover:text-[#E8234A] transition-colors">
           {item.question}
         </span>
-        <span className="shrink-0 mt-0.5 h-5 w-5 flex items-center justify-center text-[#E8234A]" aria-hidden="true">
+        <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+          isOpen ? "bg-[#E8234A] text-white" : "bg-[#F8F5EE] text-[#1C1C1C] group-hover:bg-[#E8234A]/10 group-hover:text-[#E8234A]"
+        }`} aria-hidden="true">
           {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
         </span>
       </button>
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-[600px] pb-5 opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[600px] px-6 pb-6 opacity-100" : "max-h-0 px-6 pb-0 opacity-0"
         }`}
       >
-        <p className="text-[14px] md:text-[14.5px] text-slate-500 leading-relaxed whitespace-pre-line">
+        <p className="text-[14.5px] text-[#6B7280] leading-relaxed border-t border-[#E5DFD3]/60 pt-4">
           {item.answer}
         </p>
       </div>
@@ -87,18 +84,22 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="section-divider py-20 md:py-28 bg-[#FDFAF5]">
-      <div className="container mx-auto px-5 md:px-8 max-w-4xl">
+    <section id="faq" className="py-24 md:py-32 bg-[#F8F5EE] border-t border-[#E5DFD3]/80">
+      <div className="container mx-auto px-6 md:px-8 max-w-4xl">
         <FadeIn>
-          <div className="mb-12 text-center">
-            <h2 className="text-[32px] md:text-[44px] font-bold leading-[1.15] tracking-tight text-[#1C1C1C]">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E5DFD3] text-[13px] font-semibold text-[#E8234A] mb-4 shadow-sm">
+              <HelpCircle className="w-3.5 h-3.5" />
               Frequently Asked Questions
+            </div>
+            <h2 className="text-[32px] sm:text-[42px] font-bold text-[#1C1C1C] leading-tight tracking-[-0.02em]">
+              Everything You Need to Know About Coeur.AI
             </h2>
           </div>
         </FadeIn>
 
         <FadeIn delay={80}>
-          <div>
+          <div className="space-y-4">
             {faqs.map((faq, i) => (
               <FAQItem
                 key={faq.question}
