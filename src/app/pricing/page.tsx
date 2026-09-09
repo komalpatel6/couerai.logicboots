@@ -6,7 +6,7 @@ import Footer from "@/components/layout/footer";
 import Link from "next/link";
 import {
   Check, Shield, Stethoscope, Building2, Globe2, ArrowRight,
-  Minus, Plus, Sparkles
+  Minus, Plus, Sparkles, Calculator, TrendingUp, Clock, HeartPulse
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -139,6 +139,15 @@ export default function PricingPage() {
   const [annualBilling, setAnnualBilling] = useState(true);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  // ROI Calculator States
+  const [cliniciansCount, setCliniciansCount] = useState<number>(3);
+  const [patientsPerMonth, setPatientsPerMonth] = useState<number>(180);
+
+  // Calculations
+  const hoursSavedPerMonth = Math.round(cliniciansCount * (patientsPerMonth * 0.08));
+  const estimatedMurmursDetected = Math.round(cliniciansCount * patientsPerMonth * 0.045);
+  const annualWorkflowValue = Math.round(hoursSavedPerMonth * 12 * 75);
+
   return (
     <div className="flex flex-col min-h-screen bg-[#F8F5EE] text-[#1C1C1C] font-sans">
       <Header />
@@ -163,7 +172,7 @@ export default function PricingPage() {
           <div className="inline-flex items-center gap-3 p-1.5 rounded-2xl bg-white border border-[#E5DFD3] shadow-sm">
             <button
               onClick={() => setAnnualBilling(false)}
-              className={`px-5 py-2 rounded-xl text-[13.5px] font-semibold transition-all ${
+              className={`px-5 py-2 rounded-xl text-[13.5px] font-semibold transition-all cursor-pointer ${
                 !annualBilling
                   ? "bg-[#1C1C1C] text-white shadow-sm"
                   : "text-[#6B7280] hover:text-[#1C1C1C]"
@@ -173,7 +182,7 @@ export default function PricingPage() {
             </button>
             <button
               onClick={() => setAnnualBilling(true)}
-              className={`px-5 py-2 rounded-xl text-[13.5px] font-semibold transition-all flex items-center gap-2 ${
+              className={`px-5 py-2 rounded-xl text-[13.5px] font-semibold transition-all flex items-center gap-2 cursor-pointer ${
                 annualBilling
                   ? "bg-[#E8234A] text-white shadow-sm"
                   : "text-[#6B7280] hover:text-[#1C1C1C]"
@@ -251,7 +260,7 @@ export default function PricingPage() {
 
                 <Link
                   href={plan.href}
-                  className={`w-full flex items-center justify-center gap-2 h-12 rounded-xl font-semibold text-[14px] transition-all duration-200 ${
+                  className={`w-full flex items-center justify-center gap-2 h-12 rounded-xl font-semibold text-[14px] transition-all duration-200 cursor-pointer ${
                     plan.highlighted
                       ? "btn-primary shadow-md"
                       : "btn-secondary"
@@ -263,6 +272,127 @@ export default function PricingPage() {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* ─── INTERACTIVE CLINICAL ROI & VOLUME CALCULATOR ─── */}
+        <div className="mb-24">
+          <div className="bg-white rounded-3xl border border-[#E5DFD3] p-8 md:p-12 shadow-[0_12px_40px_rgba(0,0,0,0.03)]">
+            <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
+              
+              {/* Left: Sliders */}
+              <div className="lg:w-1/2 space-y-8">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F8F5EE] border border-[#E5DFD3] text-[12px] font-bold text-[#E8234A] mb-3">
+                    <Calculator className="w-3.5 h-3.5" />
+                    Clinical Impact Calculator
+                  </div>
+                  <h3 className="text-[26px] md:text-[30px] font-bold text-[#1C1C1C] tracking-tight mb-2">
+                    Estimate Your Practice Efficiency
+                  </h3>
+                  <p className="text-[14px] text-[#6B7280] leading-relaxed">
+                    See how automated PCG segmentation and instant EHR PDF export reduce documentation bottlenecks and improve early detection.
+                  </p>
+                </div>
+
+                {/* Slider 1: Clinicians Count */}
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <label className="text-[13px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                      Number of Practicing Clinicians:
+                    </label>
+                    <span className="text-[18px] font-bold text-[#E8234A] font-mono px-3 py-1 rounded-lg bg-[#F8F5EE] border border-[#E5DFD3]">
+                      {cliniciansCount} {cliniciansCount === 1 ? "Clinician" : "Clinicians"}
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="1"
+                    max="25"
+                    value={cliniciansCount}
+                    onChange={(e) => setCliniciansCount(parseInt(e.target.value))}
+                    className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[#E8234A]"
+                  />
+                  <div className="flex justify-between text-[11px] text-[#6B7280]">
+                    <span>1 Solo MD</span>
+                    <span>10 Group Practice</span>
+                    <span>25 Hospital Department</span>
+                  </div>
+                </div>
+
+                {/* Slider 2: Patient Volume */}
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <label className="text-[13px] font-bold text-[#1C1C1C] uppercase tracking-wider">
+                      Monthly Auscultations per Clinician:
+                    </label>
+                    <span className="text-[18px] font-bold text-[#1C1C1C] font-mono px-3 py-1 rounded-lg bg-[#F8F5EE] border border-[#E5DFD3]">
+                      {patientsPerMonth} Patients
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="40"
+                    max="400"
+                    step="10"
+                    value={patientsPerMonth}
+                    onChange={(e) => setPatientsPerMonth(parseInt(e.target.value))}
+                    className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-[#E8234A]"
+                  />
+                  <div className="flex justify-between text-[11px] text-[#6B7280]">
+                    <span>40 / mo (Low OPD)</span>
+                    <span>200 / mo (Standard)</span>
+                    <span>400 / mo (High Volume)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Calculated Metrics Display */}
+              <div className="lg:w-1/2 w-full grid grid-cols-1 sm:grid-cols-2 gap-4 bg-[#F8F5EE] p-6 md:p-8 rounded-3xl border border-[#E5DFD3]">
+                
+                <div className="bg-white p-5 rounded-2xl border border-[#E5DFD3] shadow-sm">
+                  <div className="w-9 h-9 rounded-xl bg-[#E8234A]/10 border border-[#E8234A]/20 flex items-center justify-center text-[#E8234A] mb-3">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div className="text-[28px] font-bold text-[#1C1C1C] tracking-tight stat-number">
+                    {hoursSavedPerMonth} <span className="text-[14px] font-normal text-[#6B7280]">hrs/mo</span>
+                  </div>
+                  <div className="text-[13px] font-bold text-[#1C1C1C] mt-1">Transcription Hours Saved</div>
+                  <div className="text-[11.5px] text-[#6B7280] mt-0.5">Automated HL7/FHIR notes</div>
+                </div>
+
+                <div className="bg-white p-5 rounded-2xl border border-[#E5DFD3] shadow-sm">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 mb-3">
+                    <HeartPulse className="w-5 h-5" />
+                  </div>
+                  <div className="text-[28px] font-bold text-[#1C1C1C] tracking-tight stat-number">
+                    ~{estimatedMurmursDetected} <span className="text-[14px] font-normal text-emerald-600">cases/mo</span>
+                  </div>
+                  <div className="text-[13px] font-bold text-[#1C1C1C] mt-1">Early Valvular Detections</div>
+                  <div className="text-[11.5px] text-[#6B7280] mt-0.5">Asymptomatic murmurs flagged</div>
+                </div>
+
+                <div className="sm:col-span-2 bg-white p-6 rounded-2xl border border-[#E5DFD3] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div>
+                    <div className="text-[12px] font-bold uppercase tracking-wider text-[#6B7280]">
+                      Estimated Annual Practice Efficiency Value
+                    </div>
+                    <div className="text-[32px] font-bold text-[#E8234A] stat-number">
+                      ${annualWorkflowValue.toLocaleString()} <span className="text-[13px] text-[#6B7280] font-normal">/ year</span>
+                    </div>
+                  </div>
+                  <Link
+                    href="/demo?tier=clinic"
+                    className="btn-primary h-11 px-5 text-[13px] shrink-0 w-full sm:w-auto"
+                  >
+                    <span>Deploy Pilot Trial</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
         </div>
 
         {/* Feature Comparison Matrix Table */}
@@ -342,7 +472,7 @@ export default function PricingPage() {
               <div key={faq.q} className="bg-white rounded-2xl border border-[#E5DFD3] overflow-hidden shadow-sm">
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full flex items-center justify-between p-5 text-left font-bold text-[15px] text-[#1C1C1C] hover:text-[#E8234A] transition-colors"
+                  className="w-full flex items-center justify-between p-5 text-left font-bold text-[15px] text-[#1C1C1C] hover:text-[#E8234A] transition-colors cursor-pointer"
                 >
                   <span>{faq.q}</span>
                   <span className="w-7 h-7 rounded-full bg-[#F8F5EE] flex items-center justify-center shrink-0">

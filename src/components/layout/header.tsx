@@ -16,11 +16,18 @@ const navLinks = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 12);
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollProgress((window.scrollY / totalHeight) * 100);
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -41,10 +48,19 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-[#F8F5EE]/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.04)] border-b border-[#E5DFD3]"
-            : "bg-[#F8F5EE]/75 backdrop-blur-sm border-b border-[#E5DFD3]/40"
+            ? "bg-[#F8F5EE]/95 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.05)] border-b border-[#E5DFD3]"
+            : "bg-[#F8F5EE]/80 backdrop-blur-sm border-b border-[#E5DFD3]/40"
         }`}
       >
+        {/* Top Reading Scroll Progress Indicator */}
+        <div
+          className="absolute top-0 left-0 h-[2.5px] bg-gradient-to-r from-[#E8234A] via-[#FF4D6D] to-[#E8234A] transition-all duration-100 ease-out z-50"
+          style={{ width: `${scrollProgress}%` }}
+          role="progressbar"
+          aria-valuenow={Math.round(scrollProgress)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        />
         <div className="container mx-auto flex h-[72px] items-center justify-between px-6 md:px-8 max-w-[1360px]">
 
           {/* Logo */}
