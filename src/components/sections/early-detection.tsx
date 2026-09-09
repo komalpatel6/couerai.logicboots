@@ -3,7 +3,7 @@
 import { FadeIn } from "@/components/fade-in";
 import {
   ArrowRight, ShieldCheck, Zap,
-  HeartPulse, Activity, Clock, Users, Check
+  Activity, Clock, Users, Check
 } from "lucide-react";
 
 export default function ImpactStatsSection() {
@@ -26,17 +26,12 @@ export default function ImpactStatsSection() {
           {/* ── CARD 1: The Challenge ── */}
           <FadeIn delay={60}>
             <div className="group relative bg-[#FDF8F3] rounded-3xl border border-rose-100/60 overflow-hidden h-full hover:shadow-[0_20px_50px_rgba(200,16,46,0.06)] transition-all duration-400">
-
-
-
               <div className="relative z-10 p-8 md:p-10 flex flex-col h-full">
-
-
 
                 {/* Heading */}
                 <h3 className="text-[26px] md:text-[32px] font-bold text-[#1C1C1C] leading-[1.2] tracking-tight mb-4">
                   Better Screening<br />
-                  Shouldn't Be{" "}
+                  Shouldn&apos;t Be{" "}
                   <span className="text-[#E8234A]">Complicated</span>
                 </h3>
 
@@ -45,12 +40,12 @@ export default function ImpactStatsSection() {
 
                 {/* Body */}
                 <p className="text-[15px] text-slate-500 leading-relaxed mb-10">
-                  Heart conditions often need timely attention, but efficient screening isn't always within
+                  Heart conditions often need timely attention, but efficient screening isn&apos;t always within
                   reach. Healthcare professionals need tools that are fast, reliable, and easy to use —
                   not ones that add extra steps.
                 </p>
 
-                {/* Feature list — no boxes, just clean rows */}
+                {/* Feature list */}
                 <ul className="space-y-5 mb-10 flex-1">
                   {[
                     { icon: Clock,    text: "Delayed detection puts patients at risk" },
@@ -68,7 +63,7 @@ export default function ImpactStatsSection() {
 
                 {/* CTA */}
                 <div className="mt-auto flex items-center gap-2 text-[13.5px] font-bold text-[#E8234A] group-hover:gap-3 transition-all duration-200">
-                  That's where Coeur.AI comes in
+                  That&apos;s where Coeur.AI comes in
                   <ArrowRight className="h-4 w-4" />
                 </div>
               </div>
@@ -78,12 +73,7 @@ export default function ImpactStatsSection() {
           {/* ── CARD 2: Meet Coeur.AI ── */}
           <FadeIn delay={120}>
             <div className="group relative bg-[#F5F0E8] rounded-3xl border border-blue-100/60 overflow-hidden h-full hover:shadow-[0_20px_50px_rgba(10,26,77,0.07)] transition-all duration-400">
-
-
-
               <div className="relative z-10 p-8 md:p-10 flex flex-col h-full">
-
-
 
                 {/* Heading */}
                 <h3 className="text-[26px] md:text-[32px] font-bold text-[#1C1C1C] leading-[1.2] tracking-tight mb-4">
@@ -102,7 +92,7 @@ export default function ImpactStatsSection() {
                   right alongside their own clinical judgment.
                 </p>
 
-                {/* Feature check list — no boxes, clean rows */}
+                {/* Feature check list */}
                 <ul className="space-y-5 mb-10 flex-1">
                   {[
                     "Real-time cardiac sound analysis",

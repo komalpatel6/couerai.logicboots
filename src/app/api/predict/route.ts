@@ -1,34 +1,31 @@
-// src/app/api/predict/route.ts
+import { NextRequest, NextResponse } from "next/server";
 
-import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic";
+export const maxDuration = 60; // 60s timeout for model inference
 
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: "10mb", // Set desired value here
-    },
-  },
-};
+// The URL of your running Python Flask/FastAPI server (prefers server-side private env var)
+const PYTHON_API_URL = process.env.PYTHON_API_URL || process.env.NEXT_PUBLIC_PYTHON_API_URL;
 
-// The URL of your running Python Flask server
-const PYTHON_API_URL = process.env.NEXT_PUBLIC_PYTHON_API_URL;
-
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   if (!PYTHON_API_URL) {
     return NextResponse.json(
-      { error: "API URL is not configured" },
-      { status: 500 }
+      { error: "Diagnostic prediction service is not configured." },
+      { status: 503 }
     );
   }
+
   try {
     const formData = await request.formData();
     const file = formData.get("file");
 
-    if (!file) {
-      return NextResponse.json({ error: "No file found." }, { status: 400 });
+    if (!file || !(file instanceof Blob)) {
+      return NextResponse.json(
+        { error: "Audio/PCG file is required for analysis." },
+        { status: 400 }
+      );
     }
 
-    // We need to forward the file to the Python API
+    // Forward the file to the Python API
     const pythonApiFormData = new FormData();
     pythonApiFormData.append("file", file);
 
@@ -38,22 +35,27 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
+      const errorText = await response.text();
+      let errorMessage = "Prediction analysis failed.";
+      try {
+        const errorJson = JSON.parse(errorText);
+        errorMessage = errorJson.error || errorMessage;
+      } catch {
+        // Fallback to text if not JSON
+      }
+
       return NextResponse.json(
-        { error: errorData.error || "Prediction API failed" },
+        { error: errorMessage },
         { status: response.status }
       );
     }
 
-    const responseText = await response.text();
-    console.log("DEBUG: Raw response from Python server:", responseText);
-    const data = JSON.parse(responseText);
+    const data = await response.json();
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Error in Next.js API route:", error);
-    // Check if the python server is running if you see a fetch error here
+    console.error("Error in diagnostic prediction route:", error);
     return NextResponse.json(
-      { error: "Internal Server Error. Is the Python server running??" },
+      { error: "Internal Server Error in prediction service." },
       { status: 500 }
     );
   }

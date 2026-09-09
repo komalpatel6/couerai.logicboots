@@ -1,19 +1,23 @@
 import { FadeIn } from "@/components/fade-in";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export default function CtaSection() {
   return (
-    <section className="pt-20 md:pt-28 pb-0 md:pb-0 bg-[#f8fafc]/50 section-divider">
+    <section className="pt-20 md:pt-28 pb-0 md:pb-0 bg-[#FDFAF5] section-divider">
       <div className="container mx-auto px-6 md:px-8 max-w-7xl text-center">
         
         {/* Header copy */}
         <FadeIn>
+          <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-100 px-3.5 py-1 rounded-full text-[12px] font-bold tracking-wider text-[#E8234A] uppercase mb-4">
+            Next-Generation Stethoscope AI
+          </div>
           <h2 className="text-[36px] md:text-[50px] font-bold leading-tight tracking-tight text-[#1C1C1C] mb-4">
-            Let’s Make Cardiac Screening Smarter
+            Let’s Make Cardiac &amp; Pulmonary Screening Smarter
           </h2>
-          <p className="text-[16px] md:text-[18px] text-[#1C1C1C]/75 leading-relaxed max-w-2xl mx-auto mb-10">
-            See how Coeur.AI brings AI and healthcare together to support faster, more informed screening.
+          <p className="text-[16px] md:text-[18px] text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10">
+            Discover how Coeur.AI brings clinical acoustic neural models to your fingertips to support faster, more informed point-of-care screening.
           </p>
         </FadeIn>
 
@@ -24,9 +28,9 @@ export default function CtaSection() {
             {/* Demo CTA */}
             <Link 
               href="/demo" 
-              className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-xl bg-[#0052ff] hover:bg-[#0040d0] text-white text-[15px] font-semibold transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-xl bg-[#E8234A] hover:bg-[#C4182E] text-white text-[15px] font-semibold transition-all duration-200 shadow-md hover:shadow-[0_6px_20px_rgba(232,35,74,0.35)] hover:-translate-y-0.5"
             >
-              Request a Demo
+              Request a Clinical Demo
               <ArrowRight className="h-4 w-4" />
             </Link>
 
@@ -35,10 +39,10 @@ export default function CtaSection() {
               href="https://play.google.com/store/apps/details?id=com.logicboots.coeurai"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-slate-200 bg-[#FDFAF5] hover:border-[#0052ff]/30 hover:shadow-md transition-all duration-200"
+              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-[#D9D0BF] bg-white hover:border-[#E8234A]/40 hover:shadow-md transition-all duration-200"
               aria-label="Download Coeur.AI on Google Play"
             >
-              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#0a1a4d] shrink-0" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-[#1C1C1C] shrink-0" aria-hidden="true">
                 <path d="M3.18 23.76a2 2 0 0 0 2.24-.22l12.49-7.2-2.82-2.82L3.18 23.76ZM.5 1.34A2 2 0 0 0 0 2.68v18.64a2 2 0 0 0 .5 1.34l.07.07 10.46-10.46v-.24L.57 1.27.5 1.34ZM20.32 10.54l-2.94-1.7-3.18 3.18 3.18 3.18 2.96-1.71a2.12 2.12 0 0 0 0-2.95ZM5.42.46 17.91 7.66 15.09 10.48 4.63.02a2 2 0 0 1 .79.44Z" />
               </svg>
               <div className="text-left">
@@ -47,10 +51,10 @@ export default function CtaSection() {
               </div>
             </Link>
 
-            {/* Apple App Store badge — coming soon */}
+            {/* Apple App Store badge */}
             <span
-              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-[#D9D0BF]/50 bg-slate-50/50 cursor-not-allowed opacity-60 select-none"
-              title="App Store — Coming Soon"
+              className="inline-flex items-center gap-3 h-14 px-6 rounded-xl border border-[#D9D0BF]/60 bg-slate-50/70 cursor-not-allowed opacity-60 select-none"
+              title="iOS App Store release coming soon"
               aria-label="Download on the App Store (coming soon)"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5 fill-slate-400 shrink-0" aria-hidden="true">
@@ -68,9 +72,12 @@ export default function CtaSection() {
         {/* Showcase Image Banner */}
         <FadeIn delay={150}>
           <div className="relative rounded-3xl overflow-hidden bg-slate-900 shadow-2xl transition-all duration-300 hover:shadow-3xl hover:scale-[1.005]">
-            <img
+            <Image
               src="/coeur-app-showcase.png"
               alt="Coeur.AI Application Dashboard and Features Showcase"
+              width={1400}
+              height={700}
+              sizes="(max-width: 1200px) 100vw, 1200px"
               className="w-full h-auto object-cover"
             />
           </div>

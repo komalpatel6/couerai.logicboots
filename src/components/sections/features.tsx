@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FadeIn } from "@/components/fade-in";
 import Image from "next/image";
-import { HeartPulse, Wind, Activity, UserCheck, Users, ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
+import { HeartPulse, Wind, Activity, UserCheck, Users, ArrowUpRight, ChevronDown } from "lucide-react";
 
 interface UseCase {
   icon: React.ReactNode;

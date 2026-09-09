@@ -1,7 +1,17 @@
-import { ImgHTMLAttributes } from 'react';
+import Image from "next/image";
 
-export default function CoeurAILogo(props: ImgHTMLAttributes<HTMLImageElement>) {
+export default function CoeurAILogo({
+  className = "h-8 w-auto",
+}: {
+  className?: string;
+}) {
   return (
-    <img src="/co-logo.jpg" alt="Coeur.AI Logo" {...props} />
+    <Image
+      src="/co-log.png"
+      alt="Coeur.AI Logo"
+      width={32}
+      height={32}
+      className={className}
+    />
   );
 }
